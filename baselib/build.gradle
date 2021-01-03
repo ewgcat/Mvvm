@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+    api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api "androidx.drawerlayout:drawerlayout:1.1.1"
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.annotation:annotation:1.1.0'
+    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'androidx.webkit:webkit:1.0.0'
+    api 'androidx.core:core-ktx:1.3.2'
+    api 'androidx.core:core:1.3.2'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    api 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+//    api project(path: ':coil')
+    configurations.all {
+        resolutionStrategy.force 'androidx.appcompat:appcompat:1.0.2',
+                'androidx.annotation:annotation:1.0.0',
+                'androidx.core:core-ktx:1.3.2',
+                'androidx.core:core:1.3.2',
+                'androidx.collection:collection:1.0.0'
+    }
+}

@@ -1,0 +1,2 @@
+include ':app',':jackpermissions', ':baselib',':coil'
+rootProject.name = "MvvmFramework"

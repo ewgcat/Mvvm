@@ -1,0 +1,19 @@
+com/lishuaihua/permissions/JackPermissions.java
+ com.lishuaihua.permissions.JackPermissions
+com/lishuaihua/permissions/PermissionUtils.java
+ com.lishuaihua.permissions.PermissionUtils
+com/lishuaihua/permissions/PermissionFragment.java
+ com.lishuaihua.permissions.PermissionFragment
+ com.lishuaihua.permissions.PermissionFragment$1
+ com.lishuaihua.permissions.PermissionFragment$2
+com/lishuaihua/permissions/Permission.java
+ com.lishuaihua.permissions.Permission
+ com.lishuaihua.permissions.Permission$Group
+com/lishuaihua/permissions/BuildConfig.java
+ com.lishuaihua.permissions.BuildConfig
+com/lishuaihua/permissions/PermissionSetting.java
+ com.lishuaihua.permissions.PermissionSetting
+com/lishuaihua/permissions/ManifestException.java
+ com.lishuaihua.permissions.ManifestException
+com/lishuaihua/permissions/OnPermission.java
+ com.lishuaihua.permissions.OnPermission
