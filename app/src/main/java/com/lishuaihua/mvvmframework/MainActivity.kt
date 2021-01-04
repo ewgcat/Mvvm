@@ -38,21 +38,21 @@ class MainActivity : BaseActivity< MainViewModel>() {
      * 运行时请求权限
      */
     private fun initPermissions(permissions: Array<String>) {
-
         JackPermissions.with(this) // 申请安装包权限
             .permission(permissions) // 申请多个权限
             .request(object : OnPermission {
-                override fun onGranted(granted: List<String>, all: Boolean) {
-                    if (all) {
+                override fun onGranted(permissions: List<String>?, all: Boolean) {
 
-                    } else {
 
-                    }
                 }
 
-                override fun onDenied(denied: List<String>, never: Boolean) {
+                override fun onDenied(permissions: List<String>?, never: Boolean) {
+
                 }
+
             })
     }
 
 }
+
+
