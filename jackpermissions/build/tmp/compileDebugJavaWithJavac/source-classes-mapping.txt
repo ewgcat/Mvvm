@@ -1,0 +1,2 @@
+com/lishuaihua/permissions/BuildConfig.java
+ com.lishuaihua.permissions.BuildConfig

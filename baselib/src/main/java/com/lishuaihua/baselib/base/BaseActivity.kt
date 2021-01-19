@@ -10,6 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import java.lang.reflect.ParameterizedType
 import androidx.lifecycle.ViewModelProvider
@@ -24,8 +25,6 @@ open abstract class BaseActivity< U : BaseViewModel>() : AppCompatActivity() {
 
     protected lateinit var vm: U
         private set
-
-
 
     @LayoutRes
     protected abstract fun getLayoutResId(): Int

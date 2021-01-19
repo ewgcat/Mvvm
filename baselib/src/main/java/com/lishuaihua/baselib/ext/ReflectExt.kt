@@ -1,9 +1,7 @@
 package com.lishuaihua.baselib.ext
 
-
 import android.view.LayoutInflater
 import android.view.View
-
 
 
 const val INFLATE_NAME = "inflate"

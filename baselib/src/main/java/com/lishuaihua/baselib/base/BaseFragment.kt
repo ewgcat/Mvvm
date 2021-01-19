@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -22,11 +24,13 @@ import java.lang.reflect.ParameterizedType
 open abstract class BaseFragment< U : ViewModel>() : Fragment() {
 
     protected lateinit var vm: U
-
-    
     protected var mActivity: Activity? = null
     protected var rootView: View? = null
-
+    protected inline fun <reified T : ViewDataBinding> binding(
+        inflater: LayoutInflater,
+        @LayoutRes resId: Int,
+        container: ViewGroup?
+    ): T = DataBindingUtil.inflate(inflater, resId, container, false)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutResId = getLayoutId()
         require(layoutResId > 0) { "The subclass must provider a valid layout resources id." }
