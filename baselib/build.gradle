@@ -58,7 +58,7 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
     api 'androidx.multidex:multidex:2.0.1'
     //图片加载框架
-    api project(path: ':coil')
+    api project(path: ':imageloaderlib')
     //动态权限申请
     api project(path: ':jackpermissions')
 
