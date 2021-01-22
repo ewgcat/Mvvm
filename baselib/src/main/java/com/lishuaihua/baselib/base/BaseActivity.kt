@@ -3,9 +3,13 @@ package com.lishuaihua.baselib.base
 import android.app.Activity
 import android.app.Application
 import android.content.ComponentCallbacks
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.view.View
+import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
@@ -15,10 +19,13 @@ import androidx.lifecycle.ViewModel
 import java.lang.reflect.ParameterizedType
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.lishuaihua.baselib.bus.LiveDataBus
 import com.lishuaihua.baselib.ext.addObserver
+import com.lishuaihua.baselib.sp.SharedPreferencesManager
+import com.lishuaihua.baselib.widget.GrayFrameLayout
 
 
-open abstract class BaseActivity< U : BaseViewModel>() : AppCompatActivity() {
+open abstract class BaseActivity<U : BaseViewModel>() : AppCompatActivity() {
 
     @LayoutRes
     var resId: Int = 0
@@ -33,15 +40,21 @@ open abstract class BaseActivity< U : BaseViewModel>() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         resId = getLayoutResId()
         require(resId > 0) { "The subclass must provider a valid layout resources id." }
-        setCustomDensity(BaseApplication.instance,this)
+        setCustomDensity(BaseApplication.instance, this)
         setContentView(resId)
         vm = createViewModel()
         doCreateView(savedInstanceState)
+        LiveDataBus.get().with("UpdateGloableColor")!!.observe(this, {
+            if ("UpdateGloableColor".equals(it)) {
+                recreate()
+            }
+        })
     }
+
     private var aNoncompatDensity = 0f
     private var aNoncompatScaledDensity = 0f
 
-    private  fun setCustomDensity(application: Application, activity: Activity) {
+    private fun setCustomDensity(application: Application, activity: Activity) {
         val appDisplayMetrics: DisplayMetrics = application.getResources().getDisplayMetrics()
         if (aNoncompatDensity == 0f) {
             aNoncompatDensity = appDisplayMetrics.density
@@ -49,7 +62,8 @@ open abstract class BaseActivity< U : BaseViewModel>() : AppCompatActivity() {
             application.registerComponentCallbacks(object : ComponentCallbacks {
                 override fun onConfigurationChanged(@NonNull newConfig: Configuration) {
                     if (newConfig.fontScale > 0) {
-                        aNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity
+                        aNoncompatScaledDensity =
+                            application.getResources().getDisplayMetrics().scaledDensity
                     }
                 }
 
@@ -80,7 +94,47 @@ open abstract class BaseActivity< U : BaseViewModel>() : AppCompatActivity() {
      * @return the view model will be used.
      */
     protected fun createViewModel(): U {
-        val vmClass: Class<U> = (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<U>
+        val vmClass: Class<U> =
+            (this.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<U>
         return ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(vmClass)
+    }
+
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        var defaultGloableColor =
+            SharedPreferencesManager.getInstance(context).getInt("defaultGloableColor", 0)
+        if (defaultGloableColor == 1) {
+            if (("FrameLayout" == name)) {
+                var count: Int = attrs.getAttributeCount()
+                for (i in 0 until count) {
+                    var attributeName: String? = attrs.getAttributeName(i)
+                    var attributeValue: String? = attrs.getAttributeValue(i)
+                    if ((attributeName == "id")) {
+                        var id: Int = attributeValue?.substring(1)!!.toInt()
+                        var idVal: String? = getResources().getResourceName(id)
+                        if (("android:id/content" == idVal)) {
+                            var grayFrameLayout: GrayFrameLayout? = GrayFrameLayout(context, attrs)
+                            return grayFrameLayout
+                        }
+                    }
+                }
+            }
+        } else {
+            if (("FrameLayout" == name)) {
+                var count: Int = attrs.getAttributeCount()
+                for (i in 0 until count) {
+                    var attributeName: String? = attrs.getAttributeName(i)
+                    var attributeValue: String? = attrs.getAttributeValue(i)
+                    if ((attributeName == "id")) {
+                        var id: Int = attributeValue?.substring(1)!!.toInt()
+                        var idVal: String? = getResources().getResourceName(id)
+                        if (("android:id/content" == idVal)) {
+                            var frameLayout: FrameLayout? = FrameLayout(context, attrs)
+                            return frameLayout
+                        }
+                    }
+                }
+            }
+        }
+        return super.onCreateView(name, context, attrs)
     }
 }

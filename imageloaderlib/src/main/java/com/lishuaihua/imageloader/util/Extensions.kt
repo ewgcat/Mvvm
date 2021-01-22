@@ -23,7 +23,7 @@ import android.widget.ImageView.ScaleType.FIT_END
 import android.widget.ImageView.ScaleType.FIT_START
 import androidx.core.view.ViewCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import com.lishuaihua.imageloader.base.R
+import com.lishuaihua.imageloader.R
 import com.lishuaihua.imageloader.bitmap.BitmapReferenceCounter
 import com.lishuaihua.imageloader.decode.DataSource
 import com.lishuaihua.imageloader.memory.MemoryCache
@@ -55,16 +55,16 @@ internal inline val StatFs.blockSizeCompat: Long
 
 internal val View.requestManager: ViewTargetRequestManager
     get() {
-        var manager = getTag(R.id.coil_request_manager) as? ViewTargetRequestManager
+        var manager = getTag(R.id.request_manager) as? ViewTargetRequestManager
         if (manager == null) {
             manager = synchronized(this) {
                 // Check again in case coil_request_manager was just set.
-                (getTag(R.id.coil_request_manager) as? ViewTargetRequestManager)
+                (getTag(R.id.request_manager) as? ViewTargetRequestManager)
                     ?.let { return@synchronized it }
 
                 ViewTargetRequestManager().apply {
                     addOnAttachStateChangeListener(this)
-                    setTag(R.id.coil_request_manager, this)
+                    setTag(R.id.request_manager, this)
                 }
             }
         }
