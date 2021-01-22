@@ -5,16 +5,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
-
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion  rootProject.minSdkVersion
+        targetSdkVersion  rootProject.targetSdkVersion
+        versionCode  rootProject.versionCode
+        versionName  rootProject.versionName
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -28,34 +25,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 
-    api 'androidx.recyclerview:recyclerview:1.1.0'
-    api 'androidx.annotation:annotation:1.1.0'
-    api 'androidx.appcompat:appcompat:1.2.0'
-    api 'com.google.android.material:material:1.2.1'
-    api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.webkit:webkit:1.3.0'
-    api 'androidx.core:core-ktx:1.3.2'
-    api 'androidx.core:core:1.3.2'
-    api 'androidx.collection:collection-ktx:1.1.0'
-    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    api 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
-    api 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
-    api 'com.squareup.okhttp3:okhttp:4.9.0'
-    api 'com.squareup.okio:okio:2.9.0'
-    api 'androidx.exifinterface:exifinterface:1.3.2'
-    api 'androidx.vectordrawable:vectordrawable-animated:1.1.0'
-    api 'com.caverock:androidsvg-aar:1.4'
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.collection:collection-ktx:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okio:okio:2.9.0'
+    implementation 'androidx.exifinterface:exifinterface:1.3.2'
+    implementation 'androidx.vectordrawable:vectordrawable-animated:1.1.0'
+
 }
 
 

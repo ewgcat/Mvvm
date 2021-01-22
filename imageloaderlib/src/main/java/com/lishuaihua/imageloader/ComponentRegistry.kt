@@ -26,12 +26,10 @@ class ComponentRegistry private constructor(
     fun newBuilder() = Builder(this)
 
     class Builder {
-
         private val interceptors: MutableList<Interceptor>
         private val mappers: MultiMutableList<Mapper<out Any, *>, Class<out Any>>
         private val fetchers: MultiMutableList<Fetcher<out Any>, Class<out Any>>
         private val decoders: MutableList<Decoder>
-
         constructor() {
             interceptors = mutableListOf()
             mappers = mutableListOf()

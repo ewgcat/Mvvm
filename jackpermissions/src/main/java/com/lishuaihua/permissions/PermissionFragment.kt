@@ -287,7 +287,7 @@ class PermissionFragment : Fragment() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val arguments = arguments ?: return
         if (!mDangerousRequest && requestCode == arguments.getInt(REQUEST_CODE)) {
             mDangerousRequest = true
