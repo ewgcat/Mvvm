@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/baselib" />
             <option value="$PROJECT_DIR$/imageloaderlib" />
             <option value="$PROJECT_DIR$/jackpermissions" />
+            <option value="$PROJECT_DIR$/login_module" />
+            <option value="$PROJECT_DIR$/net-lib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

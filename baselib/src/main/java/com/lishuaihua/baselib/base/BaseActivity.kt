@@ -2,6 +2,7 @@ package com.lishuaihua.baselib.base
 
 import android.app.Activity
 import android.app.Application
+import android.app.ProgressDialog
 import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.res.Configuration
@@ -13,16 +14,12 @@ import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import java.lang.reflect.ParameterizedType
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewbinding.ViewBinding
 import com.lishuaihua.baselib.bus.LiveDataBus
-import com.lishuaihua.baselib.ext.addObserver
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.baselib.widget.GrayFrameLayout
+import com.lishuaihua.net.httputils.BaseViewModel
 
 
 open abstract class BaseActivity<U : BaseViewModel>() : AppCompatActivity() {
@@ -136,5 +133,17 @@ open abstract class BaseActivity<U : BaseViewModel>() : AppCompatActivity() {
             }
         }
         return super.onCreateView(name, context, attrs)
+    }
+    private var dialogLoading: ProgressDialog? = null
+    fun showLoading() {
+        if (dialogLoading == null) {
+            dialogLoading = ProgressDialog(this)
+        }
+        dialogLoading!!.show()
+    }
+
+    fun dismissLoding() {
+        dialogLoading?.dismiss()
+        dialogLoading = null
     }
 }

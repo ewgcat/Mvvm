@@ -1,14 +1,16 @@
 package com.lishuaihua.mvvmframework
 
+import android.content.Intent
 import android.os.Bundle
 import com.lishuaihua.imageloader.load
 import com.lishuaihua.imageloader.transform.CircleCropTransformation
 import com.lishuaihua.baselib.base.BaseActivity
-import com.lishuaihua.baselib.base.BaseViewModel
 import com.lishuaihua.baselib.binding.binding
 import com.lishuaihua.baselib.bus.LiveDataBus
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
+import com.lishuaihua.login_module.LoginActivity
 import com.lishuaihua.mvvmframework.databinding.ActivitySplashBinding
+import com.lishuaihua.net.httputils.BaseViewModel
 
 class SplashActivity : BaseActivity<BaseViewModel>() {
 
@@ -34,6 +36,7 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
                 0->  SharedPreferencesManager.getInstance(SplashActivity@this).saveInt("defaultGloableColor", 1)
             }
             LiveDataBus.get().with("UpdateGloableColor", String::class.java)!!.postValue("UpdateGloableColor")
+            startActivity(Intent(SplashActivity@this, LoginActivity::class.java))
         }
 
     }
