@@ -20,9 +20,7 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
                 binding.tvResult.text=it.toString()
 
         })
-        vm.isShowLoading.observe(this,  {
-            if (it) showLoading() else dismissLoding()
-        })
+
         vm.getVerficationCode("18924138696",{
                 binding.tvResult.text=it.toString()
         })

@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +46,12 @@ open abstract class BaseActivity<U : BaseViewModel>() : AppCompatActivity() {
             if ("UpdateGloableColor".equals(it)) {
                 recreate()
             }
+        })
+        vm.isShowLoading.observe(this,  {
+            if (it) showLoading() else dismissLoding()
+        })
+        vm.errorData.observe(this,  {
+            Toast.makeText(this,it.msg, Toast.LENGTH_SHORT).show()
         })
     }
 
