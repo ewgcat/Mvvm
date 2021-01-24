@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="common_bg_color">#f6f6f8</color>
+    <color name="common_fff">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="common_f8">#f8f8f8</color>
+    <color name="common_black">#000000</color>
+    <color name="common_text_color_black_9">#b2b2b2</color>
+    <color name="common_text_color_black_c">#CCCCCC</color>
+    <color name="common_blue1">#0066ff</color>
+    <color name="common_dad9">#DAD9DB</color>
+    <color name="common_4a4a">#4A4A4A</color>
+    <color name="open_photo_color">#2995e8</color>
+    <color name="app_text_black">#1E1E1E</color>
+    <color name="app_red">#EF3947</color>
+    <color name="light_red">#f2303d</color>
+    <color name="app_divider">#c9c9c9</color>
+    <color name="transparent">#00000000</color>
+    <color name="app_red_normal">@color/app_red</color>
+    <color name="black">#212121</color>
+    <color name="red">#f13838</color>
+    <color name="black_70">#b3000000</color>
+    <!--分割线-->
+
+
+    <color name="comm_black_212121">#212121</color>
+    <color name="comm_bg">#f6f6f6</color>
+    <color name="gray_999999">#999999</color>
+
+    <!--
+      重要
+      #24201f 用于特别需要强调和突出的文字、按钮和icon
+        （如首页二级导航与界面相关按钮、icon、提示等）
+      #212121  用于重要及文字信息、内容标题信息
+         （如列表名称、大板标题、类目名称和界面相关icon等）
+      #c59b5a  小面积使用，用于与金钱交易相关的文字、按钮
+         （如店铺收益金额、支付按钮等）
+      #333333   小面积使用，用于列表标题、输入框文字等
+          （如文章列表标题文字等）
+
+      一般
+      #666666  用于辅助、次要的文字信息
+         （如商品信息描述文字、发现列表正文文字等）
+      #999999  用于辅助、次要的文字信息、时间日期等
+      #bfbfbf  用于辅助、次要的文字信息、icon等
+
+      辅助色
+      #ee2532  用于辅助、次要的文字信息
+         （如商品信息描述文字、发现列表正文文字等）
+      #2bc785  用于辅助、次要的文字信息、时间日期等
+      #4f78db  用于辅助、次要的文字信息、icon等
+      #e2c48b - #c59b5a 用于限时抢购标签底色等
+
+
+      较弱
+      #dddddd  用于分割线
+      #eeeeee  用于分割线、边框线
+      #f3f3f3  用于输入框背景
+      #f2f5f7  用于内容区域底色
+    -->
+
+
+    <color name="kb_checked_bg_color">#fd6e5f</color>
+    <color name="kb_checked_bg_pressed_color">#fb5859</color>
+    <color name="gialen_major_24201f">#24201f</color>
+    <color name="gialen_major_212121">#212121</color>
+    <color name="gialen_major_333333">#333333</color>
+    <color name="gialen_commonly_666666">#666666</color>
+    <color name="gialen_commonly_999999">#999999</color>
+    <color name="gialen_commonly_888888">#888888</color>
+    <color name="gialen_commonly_bfbfbf">#bfbfbf</color>
+    <color name="gialen_assist_ee2532">#ee2532</color>
+    <color name="gialen_assist_2bc785">#2bc785</color>
+    <color name="gialen_assist_4f78db">#4f78db</color>
+    <color name="gialen_weak_dddddd">#dddddd</color>
+    <color name="gialen_weak_eeeeee">#eeeeee</color>
+    <color name="gialen_weak_f3f3f3">#f3f3f3</color>
+    <color name="gialen_weak_f2f5f7">#f2f5f7</color>
+
+
+    <color name="backgroundColor">#ffffffff</color>
+    <color name="smallCircleColor">#dddddd</color>
+    <color name="bigCircleColor">#f1f1f1</color>
+    <color name="eeeeee">#eeeeee</color>
+    <color name="common_f6f6f7">#f6f6f7</color>
+    <color name="gray_d2d5db">#d2d5db</color>
+
+</resources>

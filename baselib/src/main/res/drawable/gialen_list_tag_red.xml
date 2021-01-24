@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    android:color="@color/gialen_assist_ee2532">
+    <corners
+        android:radius="1000dp"
+        />
+    <solid
+
+        android:color="@color/gialen_assist_ee2532" />
+    <stroke android:color="@color/gialen_assist_ee2532"
+            android:width="0.5dp"
+        ></stroke>
+
+</shape>

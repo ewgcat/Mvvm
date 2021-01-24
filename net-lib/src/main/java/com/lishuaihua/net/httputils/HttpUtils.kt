@@ -2,7 +2,7 @@ package com.lishuaihua.net.httputils
 
 import android.content.Context
 import android.util.Log
-import com.lishuaihua.net.httpsfactroy.HTTPSCerUtils
+import com.lishuaihua.net.ssl.HTTPSCerUtils
 import com.lishuaihua.net.support.CookieJarImpl
 import com.lishuaihua.net.support.HeaderInterceptor
 import okhttp3.MediaType
@@ -66,7 +66,4 @@ class HttpUtils {
             return contentType.toMediaTypeOrNull()
         }
     }
-
-
-
 }

@@ -45,7 +45,7 @@ class LoginViewModel : BaseViewModel() {
     }
 
 
-    fun getVerficationCode(phone: String, onError: (String) -> Unit) {
+    fun getVerficationCode(phone: String) {
         launch({
             var date = Date()
             val format = SimpleDateFormat("yyyyMMddHHmm")

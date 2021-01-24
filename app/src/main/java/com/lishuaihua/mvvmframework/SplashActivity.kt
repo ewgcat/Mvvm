@@ -11,33 +11,15 @@ import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.login_module.LoginActivity
 import com.lishuaihua.mvvmframework.databinding.ActivitySplashBinding
 import com.lishuaihua.net.httputils.BaseViewModel
+import com.lishuaihua.page3_module.IndexActivity
 
 class SplashActivity : BaseActivity<BaseViewModel>() {
 
     private val binding: ActivitySplashBinding by binding()
 
-    override fun getLayoutResId(): Int=R.layout.activity_splash
+    override fun getLayoutResId(): Int = R.layout.activity_splash
     override fun doCreateView(savedInstanceState: Bundle?) {
-        binding.navigationBar.setTitle("主页")
-        //资源文件
-        binding.imageView.load(R.mipmap.ic_launcher)
-        //加载网络资源
-        binding.imageView2.load("https://www.example.com/image.jpg") {
-            crossfade(true)
-            placeholder(R.mipmap.ic_launcher)
-            error(R.mipmap.ic_launcher)
-            transformations(CircleCropTransformation())
-        }
-        binding.bt.setOnClickListener {
-            var defaultGloableColor =
-                SharedPreferencesManager.getInstance(SplashActivity@this).getInt("defaultGloableColor", 0)
-            when(defaultGloableColor){
-                1->  SharedPreferencesManager.getInstance(SplashActivity@this).saveInt("defaultGloableColor", 0)
-                0->  SharedPreferencesManager.getInstance(SplashActivity@this).saveInt("defaultGloableColor", 1)
-            }
-            LiveDataBus.get().with("UpdateGloableColor", String::class.java)!!.postValue("UpdateGloableColor")
-            startActivity(Intent(SplashActivity@this, LoginActivity::class.java))
-        }
-
+        startActivity(Intent(SplashActivity@ this, MainActivity::class.java))
+        finish()
     }
 }

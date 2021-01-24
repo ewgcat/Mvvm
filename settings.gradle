@@ -1,3 +1,4 @@
 include ':app',':jackpermissions', ':baselib', ':imageloaderlib'
 include ':net-lib'
 include ':login_module'
+include ':page3_module'

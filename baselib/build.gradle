@@ -57,6 +57,14 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     api 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
     api 'androidx.multidex:multidex:2.0.1'
+    api "androidx.paging:paging-runtime:3.0.0-alpha08"
+    api "androidx.room:room-ktx:2.3.0-alpha02"
+    api "androidx.room:room-runtime:2.3.0-alpha02"
+    kapt "androidx.room:room-compiler:2.3.0-alpha02"
+    //下拉刷新，上拉加载
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+    api 'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
     //图片加载框架
     api project(path: ':imageloaderlib')
     //动态权限申请

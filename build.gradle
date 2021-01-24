@@ -7,6 +7,7 @@ buildscript {
         google()
         jcenter()
         mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url 'https://maven.aliyun.com/repository/google' }
 

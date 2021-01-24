@@ -15,17 +15,15 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
     }
 
     override fun doCreateView(savedInstanceState: Bundle?) {
-        vm.liveData.observe(this,{
-                Toast.makeText(BaseApplication.instance,it.toString(),Toast.LENGTH_SHORT).show()
-                binding.tvResult.text=it.toString()
-
+        vm.liveData.observe(this, {
+            binding.tvResult.text = it.toString()
         })
-
-        vm.getVerficationCode("18924138696",{
-                binding.tvResult.text=it.toString()
+        vm.codeLiveData.observe(this, {
+            Toast.makeText(this@LoginActivity, "发送验证码", Toast.LENGTH_SHORT).show()
         })
+        vm.getVerficationCode("18924138696")
         binding.login.setOnClickListener {
-            vm.login("18924138696","123456")
+            vm.login("18924138696", "123456")
         }
 
     }
