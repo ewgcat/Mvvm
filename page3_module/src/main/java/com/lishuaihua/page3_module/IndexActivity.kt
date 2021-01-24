@@ -1,6 +1,7 @@
 package com.lishuaihua.page3_module
 
 import android.graphics.Color
+import android.graphics.ImageFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,6 +22,7 @@ class IndexActivity : BaseActivity<IndexViewModel>() {
     private lateinit var customAdapter: CustomAdapter
     var page:Int=1
     var pageSize:Int=10
+    var list=ArrayList<ItemListItem>()
     override fun getLayoutResId(): Int = R.layout.activity_index
 
     override fun doCreateView(savedInstanceState: Bundle?) {
@@ -30,10 +32,21 @@ class IndexActivity : BaseActivity<IndexViewModel>() {
         customAdapter = CustomAdapter(this)
         binding.recycleView.adapter = customAdapter
         vm.indexLiveData.observe(this,{
-            val list = it.itemList
-            if (list!=null&&list.isNotEmpty()){
-                GlobalScope.launch { customAdapter.submitData(PagingData.from(list)) }
+            if (page==1){
+                list.clear()
+                val dataList = it.itemList
+                if (dataList!=null&&dataList.isNotEmpty()){
+                    list.addAll(dataList)
+                    GlobalScope.launch { customAdapter.submitData(PagingData.from(list)) }
+                }
+            }else{
+                val dataList = it.itemList
+                if (dataList!=null&&dataList.isNotEmpty()){
+                    list.addAll(dataList)
+                    GlobalScope.launch { customAdapter.submitData(PagingData.from(list)) }
+                }
             }
+
         })
         binding.refreshLayout.setRefreshHeader(ClassicsHeader(this).setAccentColor(Color.parseColor("#ffffff")))
         binding.refreshLayout.setRefreshFooter(ClassicsFooter(this))
