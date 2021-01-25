@@ -12,7 +12,6 @@ import com.lishuaihua.paging3.simple.SimplePagingAdapter
 
 class IndexActivity : BaseActivity<IndexViewModel>() {
     private val binding: ActivityIndexBinding by binding()
-    private lateinit var customAdapter: CustomAdapter
     private lateinit var adapter : SimplePagingAdapter
 
     override fun getLayoutResId(): Int = R.layout.activity_index
