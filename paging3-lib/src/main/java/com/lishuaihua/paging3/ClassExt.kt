@@ -1,0 +1,29 @@
+package com.lishuaihua.paging3
+
+import java.lang.reflect.ParameterizedType
+
+/**
+ * 通过反射,获得定义Class时声明的父类的范型参数的类型.
+ */
+fun <T> Class<*>.getSuperClassGenericType(): Class<T> {
+    return getSuperClassGenericType(0)
+}
+
+/**
+ * 通过反射,获得定义Class时声明的父类的范型参数的类型.
+ */
+@Suppress("UNCHECKED_CAST")
+fun <T> Class<*>.getSuperClassGenericType(index: Int): Class<T> {
+    var cls: Class<*>? = this
+    var genType = cls?.genericSuperclass
+    while (genType !is ParameterizedType) {
+        cls = cls?.superclass
+        requireNotNull(cls)
+        genType = cls.genericSuperclass
+    }
+    val params = genType.actualTypeArguments
+    require(!(index >= params.size || index < 0))
+    return if (params[index] !is Class<*>) {
+        throw IllegalArgumentException()
+    } else params[index] as Class<T>
+}

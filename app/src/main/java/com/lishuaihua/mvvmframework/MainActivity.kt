@@ -11,7 +11,7 @@ import com.lishuaihua.imageloader.transform.CircleCropTransformation
 import com.lishuaihua.login_module.LoginActivity
 import com.lishuaihua.mvvmframework.databinding.ActivityMainBinding
 import com.lishuaihua.net.httputils.BaseViewModel
-import com.lishuaihua.page3_module.IndexActivity
+import com.lishuaihua.index.IndexActivity
 
 class MainActivity : BaseActivity<BaseViewModel>() {
 

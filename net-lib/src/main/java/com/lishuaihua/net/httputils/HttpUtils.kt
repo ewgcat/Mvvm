@@ -39,6 +39,7 @@ class HttpUtils {
                     .writeTimeout(10, TimeUnit.SECONDS)
                     .retryOnConnectionFailure(true) // 失败重发
                     .addInterceptor(HeaderInterceptor())
+                    .addInterceptor(CacheInterceptor(context))
                     .cookieJar(CookieJarImpl())
                 val okHttpClient = builder.build()
                 //组装retrofit

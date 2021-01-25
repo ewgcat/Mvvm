@@ -71,5 +71,8 @@ dependencies {
     api project(path: ':jackpermissions')
     //动态权限申请
     api project(path: ':net-lib')
+    //paging3
+    api project(path: ':paging3-lib')
+
 
 }

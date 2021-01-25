@@ -9,6 +9,9 @@ import com.lishuaihua.baselib.util.DateUtil
 import com.lishuaihua.baselib.util.MD5Util
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.net.httputils.HttpUtils
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.ClassicsHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import okhttp3.OkHttpClient
 
 open class BaseApplication : Application() {
@@ -41,14 +44,22 @@ open class BaseApplication : Application() {
             builder,
             BuildConfig.DEBUG
         )
-
+        initSmartRefreshLayout()
     }
-
+    private fun initSmartRefreshLayout() {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { instance, _ ->
+            ClassicsHeader(instance)
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { instance, _ ->
+            ClassicsFooter(instance)
+        }
+    }
     companion object {
         private val TAG = BaseApplication::class.java.simpleName
 
         @get:Synchronized
         lateinit var instance: BaseApplication
+
 
     }
 }
