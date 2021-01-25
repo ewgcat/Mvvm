@@ -1,5 +1,6 @@
 package com.lishuaihua.index
 
+import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingSource
@@ -14,10 +15,13 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class IndexViewModel : BaseViewModel() {
 
     var indexLiveData = MutableLiveData<IndexData>()
+    var listLiveData = MutableLiveData<ArrayList<ItemListItem>>()
+
     private val indexService = HttpUtils.create(IndexService::class.java)
 
     fun index(page: Int, pageSize: Int) {
@@ -46,12 +50,16 @@ class IndexViewModel : BaseViewModel() {
 
     var page: Int = 1
     var pageSize: Int = 2
-    var jsonObject=JSONObject()
+    var jsonObject = JSONObject()
+    var itemList= ArrayList<ItemListItem>()
+    private val mDate = Calendar.getInstance().apply {
+        add(Calendar.DATE, 1)
+    }
 
 
-    private val pager = object : SimplePager<JSONObject, ItemListItem>(pageSize, jsonObject) {
-        override suspend fun loadData(params: PagingSource.LoadParams<JSONObject>): PagingSource.LoadResult<JSONObject, ItemListItem> {
-            val key = params.key ?: return PagingSource.LoadResult.Page(emptyList(), null, null)
+
+    private val pager = object : SimplePager<Int, ItemListItem>(pageSize, 10) {
+        override suspend fun loadData(params: PagingSource.LoadParams<Int>): PagingSource.LoadResult<Int, ItemListItem> {
             jsonObject.put("platform", 1)
             jsonObject.put("terminal", 2)
             jsonObject.put("type", "hotRecommend")
@@ -59,12 +67,11 @@ class IndexViewModel : BaseViewModel() {
             jsonObject.put("page", page)
             val baseParams = getBaseParams(jsonObject)
             return try {
-
                 var date = Date()
                 val format = SimpleDateFormat("yyyyMMddHHmm")
                 var reqDate = format.format(date)
                 var sign = MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/shop.ald")
-                val result=  indexService.index(
+                val result = indexService.index(
                     "http://cs-jiaomigo.gialen.com/gateway/app/req/shop.ald", sign,
                     reqDate,
                     "0",
@@ -72,10 +79,17 @@ class IndexViewModel : BaseViewModel() {
                     baseParams
                 )
                 val indexData = result.data as IndexData
-                var list=indexData.itemList as List<ItemListItem>
-                ++page
-                jsonObject.put("page", page)
-                PagingSource.LoadResult.Page(list, null, null)
+                var list = indexData.itemList as ArrayList<ItemListItem>
+                if (page==1){
+                    itemList.clear()
+                    itemList.addAll(list)
+                    listLiveData.value=itemList
+                }else{
+                    itemList.addAll(list)
+                }
+                PagingSource.LoadResult.Page(itemList, null,
+                    //加载下一页的key 如果传null就说明到底了
+                    null)
             } catch (e: Exception) {
                 PagingSource.LoadResult.Error(e)
             }
