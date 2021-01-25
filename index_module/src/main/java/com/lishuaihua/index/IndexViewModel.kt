@@ -49,17 +49,12 @@ class IndexViewModel : BaseViewModel() {
     }
 
     var page: Int = 1
-    var pageSize: Int = 2
+    var pageSize: Int = 10
     var jsonObject = JSONObject()
     var itemList= ArrayList<ItemListItem>()
-    private val mDate = Calendar.getInstance().apply {
-        add(Calendar.DATE, 1)
-    }
-
-
-
-    private val pager = object : SimplePager<Int, ItemListItem>(pageSize, 10) {
+    private val pager = object : SimplePager<Int, ItemListItem>(pageSize, page) {
         override suspend fun loadData(params: PagingSource.LoadParams<Int>): PagingSource.LoadResult<Int, ItemListItem> {
+            page = params.key ?: 1
             jsonObject.put("platform", 1)
             jsonObject.put("terminal", 2)
             jsonObject.put("type", "hotRecommend")
@@ -87,9 +82,10 @@ class IndexViewModel : BaseViewModel() {
                 }else{
                     itemList.addAll(list)
                 }
+
                 PagingSource.LoadResult.Page(itemList, null,
                     //加载下一页的key 如果传null就说明到底了
-                    null)
+                    page+1)
             } catch (e: Exception) {
                 PagingSource.LoadResult.Error(e)
             }

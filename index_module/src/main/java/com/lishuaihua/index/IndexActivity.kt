@@ -46,6 +46,7 @@ class IndexActivity : BaseActivity<IndexViewModel>() {
             .errorViewLayout(R.layout.state_error)
             .addRetryButtonId(R.id.btn_retry)
             .setRetryClickListener { _, _ ->
+                vm.page=1
                 adapter.refresh()
             }
             .build()
@@ -53,6 +54,7 @@ class IndexActivity : BaseActivity<IndexViewModel>() {
 
         binding.refreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onRefresh(refreshLayout: RefreshLayout) {
+                vm.page=1
                 adapter.refresh()
             }
             override fun onLoadMore(refreshLayout: RefreshLayout) {
