@@ -19,8 +19,6 @@ import com.lishuaihua.imageloader.svg.utils.SVGBase.Box;
  * svg.renderToCanvas(canvas, renderOptions);
  * }
  * </pre>
- *
- * @since 1.3
  */
 
 public class RenderOptionsBase {
