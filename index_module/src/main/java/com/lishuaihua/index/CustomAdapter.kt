@@ -89,8 +89,7 @@ class CustomAdapter(var context: Context) : PagingDataAdapter<ItemListItem, Cust
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val binding=  DataBindingUtil.inflate<ViewItemBinding>(LayoutInflater.from(parent.context), R.layout.view_item, parent, false)
-        return CustomViewHolder(binding.root)
+        return CustomViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_item,parent))
     }
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

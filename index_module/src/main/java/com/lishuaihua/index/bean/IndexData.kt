@@ -8,7 +8,7 @@ data class IndexData(
     @SerializedName("wxMiniHotAreaModule")
     var wxMiniHotAreaModule: String? = null,
     @SerializedName("itemList")
-    var itemList: List<ItemListItem>?,
+    var itemList: List<ItemListItem> = emptyList(),
     @SerializedName("sort")
     var sort: Int = 0,
     @SerializedName("id")

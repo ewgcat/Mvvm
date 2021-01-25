@@ -1,7 +1,7 @@
 package com.lishuaihua.index.bean
 
 import com.google.gson.annotations.SerializedName
-import com.lishuaihua.paging3.DifferData
+import com.lishuaihua.paging3.adapter.DifferData
 
 data class ItemListItem(
     @SerializedName("att")
@@ -52,6 +52,21 @@ data class ItemListItem(
     }
 
     override fun areContentsTheSame(d: DifferData): Boolean {
-        return (d as? ItemListItem)?.title == title
+        val b1 = (d as? ItemListItem)?.title == title
+        val b2 = (d as? ItemListItem)?.att == att
+        val b3 = (d as? ItemListItem)?.link == link
+        val b4 = (d as? ItemListItem)?.sort == sort
+        val b5 = (d as? ItemListItem)?.totalInventory == totalInventory
+        val b6 = (d as? ItemListItem)?.type == type
+        val b7 = (d as? ItemListItem)?.hotAreaName == hotAreaName
+        val b8 = (d as? ItemListItem)?.imgUrl == imgUrl
+        val b9 = (d as? ItemListItem)?.takeMsg == takeMsg
+        val b10 = (d as? ItemListItem)?.mpGhId == mpGhId
+        val b11 = (d as? ItemListItem)?.crossBorderTag == crossBorderTag
+        val b12 = (d as? ItemListItem)?.countryTag == countryTag
+        val b13 = (d as? ItemListItem)?.mdp == mdp
+        val b14 = (d as? ItemListItem)?.linkType == linkType
+
+        return b1&&b2&&b3&&b4&&b5&&b6&&b7&&b8&&b9&&b10&&b11&&b12&&b13&&b14
     }
 }

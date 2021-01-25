@@ -1,4 +1,4 @@
-package com.lishuaihua.paging3
+package com.lishuaihua.paging3.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

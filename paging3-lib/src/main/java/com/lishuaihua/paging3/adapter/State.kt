@@ -1,7 +1,7 @@
-package com.lishuaihua.paging3
+package com.lishuaihua.paging3.adapter
 
 /**
- * @description : 刷新或加载更多状态
+ * @description : Adapter 刷新或加载更多状态
  */
 sealed class State {
     object Loading : State()

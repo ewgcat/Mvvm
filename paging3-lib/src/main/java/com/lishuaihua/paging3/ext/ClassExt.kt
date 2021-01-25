@@ -1,9 +1,14 @@
-package com.lishuaihua.paging3
+package com.lishuaihua.paging3.ext
 
 import java.lang.reflect.ParameterizedType
 
 /**
  * 通过反射,获得定义Class时声明的父类的范型参数的类型.
+ * 如public BookManager extends GenericManager<Book>
+ *
+ * this is The class to introspect
+ * @return the first generic declaration,
+ * or <code>Object.class</code> if cannot be determine
  */
 fun <T> Class<*>.getSuperClassGenericType(): Class<T> {
     return getSuperClassGenericType(0)
@@ -11,6 +16,10 @@ fun <T> Class<*>.getSuperClassGenericType(): Class<T> {
 
 /**
  * 通过反射,获得定义Class时声明的父类的范型参数的类型.
+ * 如public BookManager extends GenericManager<Book>
+ *
+ * this is clazz The class to introspect
+ * @param index the Index of the generic declaration,start from 0.</Book>
  */
 @Suppress("UNCHECKED_CAST")
 fun <T> Class<*>.getSuperClassGenericType(index: Int): Class<T> {

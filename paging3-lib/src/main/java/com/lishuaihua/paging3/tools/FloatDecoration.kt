@@ -1,4 +1,4 @@
-package com.lishuaihua.paging3
+package com.lishuaihua.paging3.tools
 
 import android.graphics.Canvas
 import android.graphics.Rect
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import androidx.recyclerview.widget.RecyclerView.SimpleOnItemTouchListener
 
 /**
+ * Created by Leo on 2018/6/4.
  * recyclerView 顶部悬浮条目（类似分组标题悬浮）
  */
 class FloatDecoration(private vararg val mViewTypes: Int) : ItemDecoration() {
@@ -255,7 +256,7 @@ class FloatDecoration(private vararg val mViewTypes: Int) : ItemDecoration() {
             mHolderCache[viewType] = holder
         }
         adapter.bindViewHolder(holder, mFloatPosition)
-        layoutView(holder!!.itemView, recyclerView)
+        layoutView(holder.itemView, recyclerView)
         return holder
     }
 
