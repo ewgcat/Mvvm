@@ -12,6 +12,8 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import com.lishuaihua.servicemanager.compat.BundleCompat;
 import com.lishuaihua.servicemanager.local.ServicePool;
 
@@ -58,6 +60,7 @@ public class ServiceProvider extends ContentProvider {
         return CONTENT_URI;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public Bundle call(String method, String arg, Bundle extras) {
 

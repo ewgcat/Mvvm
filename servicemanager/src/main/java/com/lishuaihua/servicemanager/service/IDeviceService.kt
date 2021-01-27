@@ -1,110 +1,109 @@
-package com.lishuaihua.servicemanager.service;
-
+package com.lishuaihua.servicemanager.service
 
 /**
  * 描述:  与设备相关的配置信息
  */
-
-public interface IDeviceService {
-    String DEVICE_SERVICE_NAME = "device_service";
-
-    String getModel();
+interface IDeviceService {
+    var model: String?
 
     /***
      * 获取MCC
      */
-    public String getMcc();
-
+    var mcc: String?
 
     /***
      * 获取Operator MCC
      */
-    public String getNetworkMcc();
+    var networkMcc: String?
 
     /***
      * 获取Mnc
      */
-    public String getMnc();
+    var mnc: String?
 
     /***
      * 获取Operator MCC
      */
-    public String getNetworkMnc();
+    var networkMnc: String?
 
     /**
      * 获取设备默认语言
      */
-    public String getDeviceDefaultLanguage();
+    var deviceDefaultLanguage: String?
 
     /**
      * 获取ClientId
      *
      * @return
      */
-    public String getClientId();
+    var clientId: String?
 
     /**
      * 获取老版本ClientId
      *
      * @return
      */
-    public int getOldVersionCode();
+    var oldVersionCode: Int
 
     /**
      * 获取当前设备安卓系统版本号
      */
-    public String getSystemVersion();
+    var systemVersion: String?
 
     /**
      * 获取手机品牌
      *
      * @return
      */
-    public String getPhoneBrand();
+    var phoneBrand: String?
 
     /**
      * 获取手机Android API等级（22、23 ...）
      *
      * @return
      */
-    public int getBuildLevel();
+    var buildLevel: Int
 
     /**
      * 获取设备宽度（px）
      *
      * @return
      */
-    public int getDeviceWidth();
+    var deviceWidth: Int
 
     /**
      * 获取设备高度（px）
      *
      * @return
      */
-    public int getDeviceHeight();
+    var deviceHeight: Int
 
     /**
      * SD卡判断
      *
      * @return
      */
-    public boolean isSDCardAvailable();
+    var isSDCardAvailable: Boolean
 
     /**
      * 是否有网
      *
      * @return
      */
-    public boolean isNetworkConnected();
+    var isNetworkConnected: Boolean
 
     /**
      * 是否这次安装时新安装
      */
-    boolean isNewInstall();
+    var isNewInstall: Boolean
 
     /**
      * 是否是三星设备
      * @return
      */
-    public boolean isSamSungDevice();
+    var isSamSungDevice: Boolean
+
+    companion object {
+        const val DEVICE_SERVICE_NAME = "device_service"
+    }
 }
