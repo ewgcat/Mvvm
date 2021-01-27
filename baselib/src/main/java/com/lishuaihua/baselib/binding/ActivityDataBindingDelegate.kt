@@ -26,13 +26,11 @@ class ActivityDataBindingDelegate<T : ViewBinding>(
     private var viewBinding: T? = null
 
     override fun getValue(thisRef: Activity, property: KProperty<*>): T {
-
         return viewBinding?.run {
             this
         } ?: let {
             val bind = layoutInflater.invoke(null, thisRef.layoutInflater) as T
             thisRef.setContentView(bind.root)
-
             bind.apply { viewBinding = this }
         }
 

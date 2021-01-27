@@ -8,7 +8,8 @@ import java.lang.reflect.Method
  * so this helper classes uses reflection to access the API on older devices.
  */
 object CanvasLegacy {
-     var MATRIX_SAVE_FLAG = 0
+    @kotlin.jvm.JvmField
+    var MATRIX_SAVE_FLAG: Int=0
     private var SAVE: Method? = null
     @JvmStatic
     fun save(canvas: Canvas?, saveFlags: Int) {
@@ -31,7 +32,7 @@ object CanvasLegacy {
 
     init {
         try {
-            MATRIX_SAVE_FLAG = Canvas::class.java.getField("MATRIX_SAVE_FLAG")[null] as Int
+               MATRIX_SAVE_FLAG = Canvas::class.java.getField("MATRIX_SAVE_FLAG")[null] as Int
             SAVE = Canvas::class.java.getMethod("save", Int::class.javaPrimitiveType)
         } catch (e: Throwable) {
             throw sneakyThrow(e)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.lishuaihua.baselib.base.BaseActivity
 import com.lishuaihua.baselib.binding.binding
+import com.lishuaihua.main_module.HomeActivity
 import com.lishuaihua.mvvmframework.databinding.ActivitySplashBinding
 import com.lishuaihua.net.httputils.BaseViewModel
 
@@ -13,7 +14,7 @@ class SplashActivity : BaseActivity<BaseViewModel>() {
 
     override fun getLayoutResId(): Int = R.layout.activity_splash
     override fun doCreateView(savedInstanceState: Bundle?) {
-        startActivity(Intent(SplashActivity@ this, MainActivity::class.java))
+        startActivity(Intent(SplashActivity@ this, HomeActivity::class.java))
         finish()
     }
 }

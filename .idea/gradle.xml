@@ -18,11 +18,16 @@
             <option value="$PROJECT_DIR$/index_module" />
             <option value="$PROJECT_DIR$/jackpermissions" />
             <option value="$PROJECT_DIR$/login_module" />
+            <option value="$PROJECT_DIR$/main_module" />
             <option value="$PROJECT_DIR$/net-lib" />
             <option value="$PROJECT_DIR$/paging3-lib" />
+            <option value="$PROJECT_DIR$/servicemanager" />
+            <option value="$PROJECT_DIR$/web-module" />
+            <option value="$PROJECT_DIR$/webview-lib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

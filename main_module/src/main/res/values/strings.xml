@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mvvm</string>
+    <string name="web_view_test">WebView 测试页面</string>
+</resources>
