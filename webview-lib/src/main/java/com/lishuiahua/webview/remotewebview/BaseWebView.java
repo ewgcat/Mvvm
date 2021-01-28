@@ -20,12 +20,12 @@ import com.google.gson.Gson;
 import com.lishuiahua.webview.remotewebview.callback.WebViewCallBack;
 import com.lishuiahua.webview.remotewebview.javascriptinterface.WebviewJavascriptInterface;
 import com.lishuiahua.webview.remotewebview.settings.WebviewDefaultSetting;
-import com.lishuiahua.webview.remotewebview.webviewclient.XiangxueWebviewClient;
+import com.lishuiahua.webview.remotewebview.webviewclient.JackWebviewClient;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class BaseWebView extends WebView implements XiangxueWebviewClient.WebviewTouch {
+public class BaseWebView extends WebView implements JackWebviewClient.WebviewTouch {
     private static final String TAG = "XiangxueWebView";
     public static final String CONTENT_SCHEME = "file:///android_asset/";
     private ActionMode.Callback mCustomCallback;
@@ -33,7 +33,7 @@ public class BaseWebView extends WebView implements XiangxueWebviewClient.Webvie
     private WebViewCallBack webViewCallBack;
     private Map<String, String> mHeaders;
     private WebviewJavascriptInterface remoteInterface = null;
-    private XiangxueWebviewClient mXiangxueWebviewClient;
+    private JackWebviewClient mJackWebviewClient;
 
     public BaseWebView(Context context) {
         super(context);
@@ -71,8 +71,8 @@ public class BaseWebView extends WebView implements XiangxueWebviewClient.Webvie
     protected void init(Context context) {
         this.context = context;
         WebviewDefaultSetting.getInstance().toSetting(this);
-        mXiangxueWebviewClient = new XiangxueWebviewClient(this, webViewCallBack, mHeaders, this);
-        setWebViewClient(mXiangxueWebviewClient);
+        mJackWebviewClient = new JackWebviewClient(this, webViewCallBack, mHeaders, this);
+        setWebViewClient(mJackWebviewClient);
 
         /**
          * Web Native交互触发

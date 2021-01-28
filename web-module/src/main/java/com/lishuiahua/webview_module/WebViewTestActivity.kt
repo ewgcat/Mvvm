@@ -100,7 +100,7 @@ class WebViewTestActivity : BaseActivity<BaseViewModel>() {
                 when (type) {
                     "account" -> {
                         map["accountId"] = "test123456"
-                        map["accountName"] = "xiangxue"
+                        map["accountName"] = "lishuaihua"
                     }
                 }
                 if (!TextUtils.isEmpty(callbackName)) {

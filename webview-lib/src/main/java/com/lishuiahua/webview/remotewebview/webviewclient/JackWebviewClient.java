@@ -26,9 +26,9 @@ import java.util.Map;
 
 import static com.lishuiahua.webview.remotewebview.BaseWebView.CONTENT_SCHEME;
 
-public class XiangxueWebviewClient extends WebViewClient {
+public class JackWebviewClient extends WebViewClient {
 
-    private static final String TAG = "XXWebviewCallBack";
+    private static final String TAG = "JackWebviewClient";
     public static final String SCHEME_SMS = "sms:";
     private WebViewCallBack webViewCallBack;
     private WebView webView;
@@ -36,7 +36,7 @@ public class XiangxueWebviewClient extends WebViewClient {
     private Map<String, String> mHeaders;
     private WebviewTouch mWebviewTouch;
 
-    public XiangxueWebviewClient(WebView webView, WebViewCallBack webViewCallBack, Map<String, String> headers, WebviewTouch touch){
+    public JackWebviewClient(WebView webView, WebViewCallBack webViewCallBack, Map<String, String> headers, WebviewTouch touch){
         this.webViewCallBack = webViewCallBack;
         this.webView = webView;
         this.mHeaders = headers;
