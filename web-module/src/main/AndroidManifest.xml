@@ -10,11 +10,7 @@
         <activity android:name="com.lishuiahua.webview_module.WebActivity"
             android:hardwareAccelerated="true"
             android:process=":remoteweb"/>
-        <activity android:name="com.lishuiahua.webview_module.login.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+
     </application>
 
 </manifest>
