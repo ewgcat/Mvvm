@@ -62,7 +62,7 @@ object ServicePool {
     }
 
     abstract class ClassProvider {
-        abstract val serviceInstance: Any
+        abstract val serviceInstance: Any?
         abstract val interfaceName: String?
     }
 }
