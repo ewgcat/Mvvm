@@ -357,7 +357,7 @@ object ScreenShotUtils {
      * @param webView
      * @return
      */
-    fun getFullWebViewSnapshot(context: Context?, webView: WebView): Boolean {
+    fun getFullWebViewSnapshot(context: Context, webView: WebView): Boolean {
         //重新调用WebView的measure方法测量实际View的大小（将测量模式设置为UNSPECIFIED模式也就是需要多大就可以获得多大的空间）
         webView.measure(
             View.MeasureSpec.makeMeasureSpec(

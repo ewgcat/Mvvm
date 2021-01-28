@@ -4,17 +4,18 @@ import android.app.Application
 import android.os.Build
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
+import com.gialen.baselib.util.MD5Util
 import com.lishuaihua.baselib.BuildConfig
 import com.lishuaihua.baselib.R
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.baselib.util.DateUtil
-import com.lishuaihua.baselib.util.MD5Util
 import com.lishuaihua.net.httputils.HttpUtils
 import com.lishuaihua.servicemanager.ServiceManager
 import com.lishuaihua.servicemanager.service.IAppInfoService
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.tencent.bugly.Bugly
 import okhttp3.OkHttpClient
 
 open class BaseApplication : Application(),IAppInfoService {
@@ -22,6 +23,8 @@ open class BaseApplication : Application(),IAppInfoService {
         super.onCreate()
         instance = this
         MultiDex.install(applicationContext)
+        Bugly.init(applicationContext,"c3010b29f1",BuildConfig.DEBUG)
+
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()
@@ -33,8 +36,7 @@ open class BaseApplication : Application(),IAppInfoService {
         val req_date =
             DateUtil.timeStamp2Date2(DateUtil.timestamp_13.toString() + "", "yyyyMMddHH24MMSS")
         val sessionId = MD5Util.MD5(req_date + 2 + "gialen_APP")
-        SharedPreferencesManager.getInstance(instance)
-            .saveString(SharedPreferencesManager.SPCommons.SESSIONID, sessionId)
+        SharedPreferencesManager.getInstance(instance)!!.saveString(SharedPreferencesManager.SPCommons.SESSIONID, sessionId)
         val builder = OkHttpClient.Builder()
         builder.addInterceptor { chain ->
             val request = chain.request()

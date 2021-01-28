@@ -1,10 +1,7 @@
 package com.lishuaihua.login_module
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
-
-import com.lishuaihua.baselib.util.MD5Util
+import com.gialen.baselib.util.MD5Util
 import com.lishuaihua.net.httputils.BaseViewModel
 
 import com.lishuaihua.net.httputils.HttpUtils

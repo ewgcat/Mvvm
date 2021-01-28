@@ -105,7 +105,7 @@ open abstract class BaseActivity<U : BaseViewModel>() : AppCompatActivity() {
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
         var defaultGloableColor =
-            SharedPreferencesManager.getInstance(context).getInt("defaultGloableColor", 0)
+            SharedPreferencesManager.getInstance(context)!!.getInt("defaultGloableColor", 0)
         if (defaultGloableColor == 1) {
             if (("FrameLayout" == name)) {
                 var count: Int = attrs.getAttributeCount()

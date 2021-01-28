@@ -26,7 +26,7 @@ import java.util.ArrayList
 
 class IndexHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
     var isVip=true
-    var context:Context?=BaseApplication.instance
+    var context:Context=BaseApplication.instance
 
     override fun bindItem(item: ItemHelper, data: ItemListItem, payloads: MutableList<Any>?) {
         var itemWith = (ScreenUtil.getScreenWidth(context) - CommonUtil.dp2px(context!!, 30f))/2

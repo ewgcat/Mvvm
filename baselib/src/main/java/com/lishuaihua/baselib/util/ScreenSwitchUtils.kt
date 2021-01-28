@@ -9,7 +9,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Handler
 import android.os.Message
-import com.gialen.baselib.util.Logger.Companion.i
+import com.lishuaihua.baselib.util.Logger.Companion.i
 
 /**
  * Created by lishuaihua on 2017/9/7.

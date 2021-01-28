@@ -1,7 +1,7 @@
-package com.gialen.baselib.util
+package com.lishuaihua.baselib.util
 
 import android.util.Log
-import com.gialen.baselib.BuildConfig
+import com.lishuaihua.baselib.BuildConfig
 
 class Logger {
     fun setTag(tag: String) {

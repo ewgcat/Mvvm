@@ -1,20 +1,17 @@
 package com.lishuaihua.index
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingSource
-import com.lishuaihua.baselib.util.MD5Util
+import com.gialen.baselib.util.MD5Util
 import com.lishuaihua.net.httputils.BaseViewModel
 import com.lishuaihua.net.httputils.HttpUtils
 import com.lishuaihua.index.bean.IndexData
-import com.lishuaihua.index.bean.ItemListItem
 import com.lishuaihua.index.service.IndexService
 import com.lishuaihua.paging3.adapter.DifferData
 import com.lishuaihua.paging3.simple.SimplePager
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class IndexViewModel : BaseViewModel() {
 

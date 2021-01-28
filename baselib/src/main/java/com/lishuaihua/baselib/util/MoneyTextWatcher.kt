@@ -3,7 +3,8 @@ package com.gialen.baselib.util
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import com.gialen.baselib.iterface.TextWatcherIterface
+import com.lishuaihua.baselib.util.TextWatcherIterface
+
 
 class MoneyTextWatcher(private val editText: EditText, private val iterface: TextWatcherIterface) : TextWatcher {
     private var digits = 2
