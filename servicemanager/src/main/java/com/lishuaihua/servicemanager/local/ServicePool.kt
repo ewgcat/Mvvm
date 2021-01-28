@@ -4,9 +4,7 @@ import android.os.Process
 import android.util.Log
 import java.util.*
 
-/**
- * Created by cailiming on 16/1/1.
- */
+
 object ServicePool {
     private val TAG = ServicePool::class.java.simpleName
     private val SYSTEM_SERVICE_MAP = Hashtable<String, ServiceFetcher>()
@@ -17,10 +15,10 @@ object ServicePool {
         if (!SYSTEM_SERVICE_MAP.containsKey(name)) {
             val fetcher: ServiceFetcher = object : ServiceFetcher() {
                 override fun createService(serviceId: Int): Any {
-                    val `object` = provider.serviceInstance
+                    val o = provider.serviceInstance!!
                     mGroupId = Process.myPid().toString()
                     Log.d(TAG, "create service instance @ pid " + Process.myPid())
-                    return `object`
+                    return o
                 }
             }
             fetcher.mServiceId++

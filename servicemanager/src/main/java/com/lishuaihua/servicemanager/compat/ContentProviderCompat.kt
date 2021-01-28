@@ -10,11 +10,11 @@ import com.lishuaihua.servicemanager.util.RefIectUtil
 object ContentProviderCompat {
     @JvmStatic
     fun call(uri: Uri, method: String?, arg: String?, extras: Bundle?): Bundle? {
-        val resolver = ServiceManager.sApplication.contentResolver
+        val resolver = ServiceManager.sApplication?.contentResolver
         return if (Build.VERSION.SDK_INT >= 11) {
-            resolver.call(uri, method!!, arg, extras)
+            resolver?.call(uri, method!!, arg, extras)
         } else {
-            val client = resolver.acquireContentProviderClient(uri)
+            val client = resolver?.acquireContentProviderClient(uri)
                 ?: throw IllegalArgumentException("Unknown URI $uri")
             try {
                 val mContentProvider = RefIectUtil.getFieldObject(

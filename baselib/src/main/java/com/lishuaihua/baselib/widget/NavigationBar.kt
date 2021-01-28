@@ -97,5 +97,5 @@ class NavigationBar :LinearLayout {
     fun setRightClickAreaVisiable(v: Int) {
         rightTv?.visibility = v
     }
-    
+
 }

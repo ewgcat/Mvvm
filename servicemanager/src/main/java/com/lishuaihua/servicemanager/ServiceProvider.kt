@@ -129,7 +129,7 @@ class ServiceProvider : ContentProvider() {
         //通知持有服务的客户端清理缓存
         val intent = Intent(ServiceManager.ACTION_SERVICE_DIE_OR_CLEAR)
         intent.putExtra(NAME, name)
-        ServiceManager.sApplication.sendBroadcast(intent)
+        ServiceManager.sApplication?.sendBroadcast(intent)
     }
 
     class Recorder {
@@ -202,12 +202,11 @@ class ServiceProvider : ContentProvider() {
         //进程ID：进程Binder
         private val processBinder = ConcurrentHashMap<Int?, IBinder?>()
         @JvmStatic
-        fun buildUri(): Uri? {
+        fun buildUri(): Uri {
             if (CONTENT_URI == null) {
-                CONTENT_URI =
-                    Uri.parse("content://" + ServiceManager.sApplication.packageName + ".svcmgr/call")
+                CONTENT_URI = Uri.parse("content://" + ServiceManager.sApplication?.packageName + ".svcmgr/call")
             }
-            return CONTENT_URI
+            return CONTENT_URI!!
         }
     }
 }

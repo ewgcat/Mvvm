@@ -1,4 +1,4 @@
-package com.lishuaihua.baselib.util
+package com.gialen.baselib.util
 
 import java.security.MessageDigest
 

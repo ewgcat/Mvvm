@@ -5,6 +5,7 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 
+
 public class ScreenUtil {
     /**
      * 获得屏幕宽度
