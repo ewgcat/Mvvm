@@ -13,10 +13,10 @@ import com.lishuaihua.baselib.R
 import com.lishuaihua.baselib.databinding.ViewNavigationBarBinding
 
 class NavigationBar :LinearLayout {
-    private var firstLeftIv: ImageView? = null
+    private var ivFirstLeft: ImageView? = null
     private var mTitleView: TextView? = null
-    private var mRightTv: TextView? = null
-    var backLL: LinearLayout? = null
+    private var rightTv: TextView? = null
+    var llBack: LinearLayout? = null
         private set
     private var bottomLine: View? = null
     constructor(context: Context?) : this(context, null)
@@ -32,10 +32,10 @@ class NavigationBar :LinearLayout {
             this,
             true
         )
-        backLL=binding.llBack
-        firstLeftIv=binding.ivFirstLeft
+        llBack=binding.llBack
+        ivFirstLeft=binding.ivFirstLeft
         mTitleView=binding.titleTv
-        mRightTv=binding.rightTv
+        rightTv=binding.rightTv
         bottomLine=binding.bottomLine
     }
 
@@ -53,8 +53,8 @@ class NavigationBar :LinearLayout {
         return mTitleView
     }
 
-    fun getmRightTv(): TextView? {
-        return mRightTv
+    fun getRightTv(): TextView? {
+        return rightTv
     }
 
     fun setTitle(title: String) {
@@ -65,41 +65,37 @@ class NavigationBar :LinearLayout {
         mTitleView?.setTextColor(color)
     }
 
-    fun setmRightTvText(text: String) {
-        mRightTv?.text = text
+    fun setRightTvText(text: String) {
+        rightTv?.text = text
     }
 
-    fun setmRightTvColor(color: Int) {
-        mRightTv?.setTextColor(color)
+    fun setRightTvColor(color: Int) {
+        rightTv?.setTextColor(color)
     }
 
-    fun setBackLLVisiable(i: Int) {
-        backLL?.visibility = i
+    fun setllBackVisiable(i: Int) {
+        llBack?.visibility = i
     }
 
     fun hideBottomLine() {
         bottomLine?.visibility = View.GONE
     }
 
-
-
     fun setBackClickListener(activity: Activity) {
-        backLL?.setOnClickListener { activity.finish() }
+        llBack?.setOnClickListener { activity.finish() }
     }
 
     fun setBackOnClickListener(listener: View.OnClickListener) {
-        backLL?.setOnClickListener(listener)
+        llBack?.setOnClickListener(listener)
     }
 
 
     fun setRightClickListener(listener: View.OnClickListener) {
-        mRightTv?.setOnClickListener(listener)
+        rightTv?.setOnClickListener(listener)
     }
 
     fun setRightClickAreaVisiable(v: Int) {
-        mRightTv?.visibility = v
+        rightTv?.visibility = v
     }
-
-
-
+    
 }
