@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lishuaihua.workmanagerlib.WorkManagerActivity"
+    android:orientation="vertical">
+    <com.lishuaihua.baselib.widget.NavigationBar
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试后台任务1"
+        android:onClick="testBackgroundWork1"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试后台任务2"
+        android:onClick="testBackgroundWork2"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试后台任务3"
+        android:onClick="testBackgroundWork3"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试后台任务4"
+        android:onClick="testBackgroundWork4"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="测试后台任务5"
+        android:onClick="testBackgroundWork5"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试后台任务六"
+            android:onClick="testBackgroundWork6"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SP归零"
+            android:onClick="spReset"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="分析源码"
+        android:onClick="codeStudy"
+        />
+
+</LinearLayout>

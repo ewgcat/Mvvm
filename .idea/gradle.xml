@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/servicemanager" />
             <option value="$PROJECT_DIR$/web-module" />
             <option value="$PROJECT_DIR$/webview-lib" />
+            <option value="$PROJECT_DIR$/workmanagerlib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

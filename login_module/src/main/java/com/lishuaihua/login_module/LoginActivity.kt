@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.lishuaihua.baselib.base.BaseActivity
 import com.lishuaihua.baselib.base.BaseApplication
 import com.lishuaihua.baselib.binding.binding
+import com.lishuaihua.baselib.util.StringUtils
 import com.lishuaihua.login_module.databinding.ActivityLoginBinding
 
 @Route(path ="/login/login")
@@ -24,9 +25,19 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
         vm.codeLiveData.observe(this, {
             Toast.makeText(this@LoginActivity, "发送验证码", Toast.LENGTH_SHORT).show()
         })
-        vm.getVerficationCode("18924138696")
+        binding.tvGetCheckCode.setOnClickListener{
+            val phone = binding.etPhone.text.toString()
+            if (!StringUtils.isEmpty(phone)){
+                vm.getVerficationCode(phone)
+            }
+        }
+
         binding.login.setOnClickListener {
-            vm.login("18924138696", "123456")
+            val phone = binding.etPhone.text.toString()
+            val code = binding.etCode.text.toString()
+            if (!StringUtils.isEmpty(phone)&&!StringUtils.isEmpty(code)){
+                vm.login(phone, code)
+            }
         }
 
     }

@@ -16,7 +16,7 @@ object BundleCompat {
             bundle.getBinder(key)
         } else {
             RefIectUtil.invokeMethod(
-                bundle, Bundle::class.java, "getIBinder", arrayOf<Class<*>>(
+                bundle, Bundle::class.java, "getIBinder", arrayOf<Class<*>?>(
                     String::class.java
                 ), arrayOf<Any?>(key)
             ) as IBinder
@@ -44,8 +44,8 @@ object BundleCompat {
                 bundle,
                 Bundle::class.java,
                 "unparcel",
-                null as Array<Class<*>?>?,
-                null as Array<Any?>?
+                null as Array<Class<*>?>,
+                null as Array<Any?>
             )
             val mMap = RefIectUtil.getFieldObject(
                 bundle,
@@ -58,8 +58,8 @@ object BundleCompat {
                 bundle,
                 Bundle::class.java,
                 "unparcel",
-                null as Array<Class<*>?>?,
-                null as Array<Any?>?
+                null as Array<Class<*>?>,
+                null as Array<Any?>
             )
             val mMap = RefIectUtil.getFieldObject(
                 bundle,
@@ -72,8 +72,8 @@ object BundleCompat {
                 bundle,
                 BaseBundle::class.java,
                 "unparcel",
-                null as Array<Class<*>?>?,
-                null as Array<Any?>?
+                null as Array<Class<*>?>,
+                null as Array<Any?>
             )
             val mMap = RefIectUtil.getFieldObject(
                 bundle,

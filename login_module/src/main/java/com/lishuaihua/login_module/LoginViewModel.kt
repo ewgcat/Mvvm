@@ -29,19 +29,17 @@ class LoginViewModel : BaseViewModel() {
             var sign =
                 MD5Util.MD5("jiaomigo.gialen.com#2019|" + phone + "|" + reqDate + "|" + "app/login")
             var jsonObject = JSONObject()
-            jsonObject.put("phone", "18924138696")
-            jsonObject.put("verificationCode", "123456")
+            jsonObject.put("phone", phone)
+            jsonObject.put("verificationCode", code)
             val baseParams = getBaseParams(jsonObject)
             loginService.postLogin(
-                "http://cs-jiaomigo.gialen.com/gateway/app/login", sign,
+                "https://apigw.gialen.com/app/login", sign,
                 reqDate,
                 "0",
                 "0",
                 baseParams
             )
         },liveData,true)
-
-
     }
 
 
@@ -50,12 +48,11 @@ class LoginViewModel : BaseViewModel() {
             var date = Date()
             val format = SimpleDateFormat("yyyyMMddHHmm")
             var reqDate = format.format(date)
-            var sign =
-                MD5Util.MD5("jiaomigo.gialen.com#2019|" + phone + "|" + reqDate + "|" + "app/login")
+            var sign = MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/user.getLoginRegistryVerification")
             var jsonObject = JSONObject()
-            jsonObject.put("phone", "18924138696")
+            jsonObject.put("phone", phone)
             loginService.getVerficationCode(
-                "http://cs-jiaomigo.gialen.com/gateway/app/req/user.getLoginRegistryVerification",
+                "https://apigw.gialen.com/app/req/user.getLoginRegistryVerification",
                 sign,
                 reqDate,
                 getBaseParams(jsonObject)

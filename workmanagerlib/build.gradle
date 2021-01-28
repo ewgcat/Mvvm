@@ -50,15 +50,13 @@ android {
         }
     }
 }
+
 dependencies {
+
     kapt 'com.alibaba:arouter-compiler:1.1.4'
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api project(path: ':baselib')
-    api project(path: ':login_module')
-    api project(path: ':index_module')
-    api project(path: ':web-module')
-    api project(path: ':workmanagerlib')
-
+    implementation "androidx.work:work-runtime:2.4.0"
 }

@@ -46,7 +46,7 @@ class IndexViewModel : BaseViewModel() {
             var sign =
                 MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/shop.ald")
             val result = indexService.index(
-                "http://cs-jiaomigo.gialen.com/gateway/app/req/shop.ald", sign,
+                "https://apigw.gialen.com/app/req/shop.ald", sign,
                 reqDate,
                 "0",
                 "0",

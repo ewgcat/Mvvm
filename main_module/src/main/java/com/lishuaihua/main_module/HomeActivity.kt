@@ -21,8 +21,11 @@ class HomeActivity : BaseActivity<BaseViewModel>() {
         }
         binding.page3.setOnClickListener{
             ARouter.getInstance().build("/index/index").navigation()
-
         }
+        binding.tvWorkManager.setOnClickListener{
+            ARouter.getInstance().build("/workmanagerlib/test").navigation()
+        }
+
     }
 
 }

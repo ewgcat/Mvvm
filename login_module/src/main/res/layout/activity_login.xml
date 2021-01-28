@@ -3,33 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
+
     <com.lishuaihua.baselib.widget.NavigationBar
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_phone"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/ll_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@+id/navigation_bar"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_bar">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="phone"
+            android:selectAllOnFocus="true"
+            android:text="18924138696" />
+
+        <TextView
+            android:id="@+id/tv_get_check_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="#888888"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
     <EditText
-        android:id="@+id/code"
-        android:layout_width="0dp"
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -37,11 +54,10 @@
         android:hint="@string/prompt_code"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
-        android:inputType="textPassword"
+        android:inputType="numberDecimal"
         android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone" />
+        app:layout_constraintLeft_toRightOf="@+id/ll_phone"
+        app:layout_constraintTop_toBottomOf="@+id/ll_phone" />
 
     <Button
         android:id="@+id/login"
@@ -52,11 +68,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
-        android:text="@string/action_sign_in"
+        android:text="登录"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/et_code"
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
@@ -70,6 +86,6 @@
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-      />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

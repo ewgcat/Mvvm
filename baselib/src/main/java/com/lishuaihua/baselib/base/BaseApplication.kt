@@ -17,7 +17,7 @@ import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import okhttp3.OkHttpClient
 
-open class BaseApplication : Application(), IAppInfoService {
+open class BaseApplication : Application(),IAppInfoService {
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -29,7 +29,7 @@ open class BaseApplication : Application(), IAppInfoService {
         ARouter.init(this)
         //初始化manager
         ServiceManager.init(this)
-        ServiceManager.publishService(IAppInfoService.APP_INFO_SERVICE_NAME, BaseApplication::class.java.getName())
+//        ServiceManager.publishService(IAppInfoService.APP_INFO_SERVICE_NAME, BaseApplication::class.java.getName())
         val req_date =
             DateUtil.timeStamp2Date2(DateUtil.timestamp_13.toString() + "", "yyyyMMddHH24MMSS")
         val sessionId = MD5Util.MD5(req_date + 2 + "gialen_APP")
@@ -50,7 +50,7 @@ open class BaseApplication : Application(), IAppInfoService {
         }
         HttpUtils.init(
             applicationContext,
-            "http://cs-jiaomigo.gialen.com/gateway/",
+            "https://apigw.gialen.com/",
             R.raw.gialen_2020_6_9,
             builder,
             BuildConfig.DEBUG
@@ -72,23 +72,15 @@ open class BaseApplication : Application(), IAppInfoService {
 
         @get:Synchronized
         lateinit var instance: BaseApplication
-
-
     }
 
-    override fun getApplicationName(): String {
-        return "Mvvm"
-    }
+    override val applicationName: String?
+        get() = "Mvvm"
+    override val applciationVersionName: String?
+        get() = "1.0.0"
+    override val applicationVersionCode: String?
+        get() = "1.0"
+    override val applicationDebug: Boolean
+        get() = BuildConfig.DEBUG
 
-    override fun getApplciationVersionName(): String {
-        return "1.0.0"
-    }
-
-    override fun getApplicationVersionCode(): String {
-        return "1"
-    }
-
-    override fun getApplicationDebug(): Boolean {
-        return BuildConfig.DEBUG
-    }
 }
