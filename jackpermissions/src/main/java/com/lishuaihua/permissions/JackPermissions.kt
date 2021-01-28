@@ -25,8 +25,6 @@ final class JackPermissions{
     private var mPermissions: MutableList<String>? = null
 
 
-
-
     /**
      * 设置权限组
      */
