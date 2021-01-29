@@ -31,7 +31,6 @@
 
     <application>
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

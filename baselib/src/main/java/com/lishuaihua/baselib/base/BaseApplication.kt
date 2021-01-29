@@ -1,7 +1,11 @@
 package com.lishuaihua.baselib.base
 
+import android.app.ActivityManager
 import android.app.Application
+import android.content.Context
 import android.os.Build
+import android.os.Process
+import android.webkit.WebView
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gialen.baselib.util.MD5Util
@@ -58,7 +62,25 @@ open class BaseApplication : Application(),IAppInfoService {
             BuildConfig.DEBUG
         )
         initSmartRefreshLayout()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            val processName = getProcessName(this)
+            val packageName = this.packageName
+            if (packageName != processName) {
+                WebView.setDataDirectorySuffix(processName!!)
+            }
+        }
     }
+
+    open fun getProcessName(context: Context): String? {
+        var manager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (processInfo in manager.runningAppProcesses) {
+            if (processInfo.pid == Process.myPid()) {
+                return processInfo.processName
+            }
+        }
+        return null
+    }
+
 
     private fun initSmartRefreshLayout() {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { instance, _ ->
