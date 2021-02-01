@@ -7,17 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewbinding.ViewBinding
-import com.lishuaihua.baselib.ext.addObserver
-import com.lishuaihua.baselib.ext.bindMethod
-import com.lishuaihua.baselib.ext.inflateMethod
-import java.lang.reflect.Method
 import java.lang.reflect.ParameterizedType
 
 

@@ -6,21 +6,19 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.work.*
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lishuaihua.baselib.base.BaseActivity
-import com.lishuaihua.baselib.binding.binding
-import com.lishuaihua.net.httputils.BaseViewModel
+import com.lishuaihua.baselib.binding.ext.viewbind
 import com.lishuaihua.workmanagerlib.databinding.ActivityWorkmanagerBinding
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 @Route(path = "/workmanagerlib/test")
-class WorkManagerActivity : BaseActivity<BaseViewModel>(), OnSharedPreferenceChangeListener {
+class WorkManagerActivity : BaseActivity(), OnSharedPreferenceChangeListener {
 
-    private val binding: ActivityWorkmanagerBinding by binding()
+    private val binding: ActivityWorkmanagerBinding by viewbind()
 
     override fun getLayoutResId(): Int =R.layout.activity_workmanager
 

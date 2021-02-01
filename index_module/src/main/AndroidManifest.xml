@@ -3,7 +3,8 @@
     package="com.lishuaihua.index">
 
     <application>
-        <activity android:name="com.lishuaihua.index.IndexActivity"></activity>
+
+        <activity android:name="com.lishuaihua.index.IndexActivity"/>
     </application>
 
 </manifest>

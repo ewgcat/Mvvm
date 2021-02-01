@@ -55,7 +55,7 @@ dependencies {
     //kotlin
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    api project(path: ':baselib')
+    api project(path: ':uilib')
     kapt 'com.alibaba:arouter-compiler:1.1.4'
 
 }

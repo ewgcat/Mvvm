@@ -3,9 +3,9 @@
     package="com.lishuaihua.login_module">
     <uses-permission android:name="android.permission.INTERNET" />
     <application>
+
         <activity
-            android:name=".LoginActivity"
-        />
+            android:name=".LoginActivity" />
     </application>
 
 </manifest>

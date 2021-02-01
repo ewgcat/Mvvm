@@ -25,13 +25,14 @@ allprojects {
         mavenCentral()
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url 'https://maven.aliyun.com/repository/google' }
     }
 }
 
 ext {
-    minSdkVersion = 16
+    minSdkVersion = 21
     targetSdkVersion = 30
     compileSdkVersion = 30
     buildToolsVersion = '30.0.3'

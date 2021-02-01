@@ -3,16 +3,17 @@ package com.lishuaihua.index
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.lishuaihua.baselib.base.BaseActivity
-import com.lishuaihua.baselib.binding.binding
+import com.lishuaihua.baselib.base.BaseViewModelActivity
+import com.lishuaihua.baselib.binding.ext.viewbind
 import com.lishuaihua.index.adapter.IndexHolder
 import com.lishuaihua.index.adapter.PlaceHolder
 import com.lishuaihua.index.databinding.ActivityIndexBinding
 import com.lishuaihua.paging3.ext.bind
 import com.lishuaihua.paging3.simple.SimplePagingAdapter
+
 @Route(path ="/index/index")
-class IndexActivity : BaseActivity<IndexViewModel>() {
-    private val binding: ActivityIndexBinding by binding()
+class IndexActivity : BaseViewModelActivity<IndexViewModel>() {
+    private val binding: ActivityIndexBinding by viewbind()
     private lateinit var adapter : SimplePagingAdapter
 
     override fun getLayoutResId(): Int = R.layout.activity_index

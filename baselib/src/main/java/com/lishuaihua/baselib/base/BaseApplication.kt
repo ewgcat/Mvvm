@@ -9,20 +9,20 @@ import android.webkit.WebView
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.gialen.baselib.util.MD5Util
+import com.kingja.loadsir.core.LoadSir
 import com.lishuaihua.baselib.BuildConfig
 import com.lishuaihua.baselib.R
+import com.lishuaihua.baselib.loadsir.*
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.baselib.util.DateUtil
 import com.lishuaihua.net.httputils.HttpUtils
-import com.lishuaihua.servicemanager.ServiceManager
-import com.lishuaihua.servicemanager.service.IAppInfoService
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.bugly.Bugly
 import okhttp3.OkHttpClient
 
-open class BaseApplication : Application(),IAppInfoService {
+open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -34,9 +34,6 @@ open class BaseApplication : Application(),IAppInfoService {
             ARouter.openDebug()
         }
         ARouter.init(this)
-        //初始化manager
-        ServiceManager.init(this)
-//        ServiceManager.publishService(IAppInfoService.APP_INFO_SERVICE_NAME, BaseApplication::class.java.getName())
         val req_date =
             DateUtil.timeStamp2Date2(DateUtil.timestamp_13.toString() + "", "yyyyMMddHH24MMSS")
         val sessionId = MD5Util.MD5(req_date + 2 + "gialen_APP")
@@ -69,6 +66,14 @@ open class BaseApplication : Application(),IAppInfoService {
                 WebView.setDataDirectorySuffix(processName!!)
             }
         }
+        LoadSir.beginBuilder()
+            .addCallback(ErrorCallback())
+            .addCallback(EmptyCallback())
+            .addCallback(LoadingCallback())
+            .addCallback(TimeoutCallback())
+            .addCallback(CustomCallback())
+            .setDefaultCallback(LoadingCallback::class.java)
+            .commit()
     }
 
     open fun getProcessName(context: Context): String? {
@@ -98,13 +103,6 @@ open class BaseApplication : Application(),IAppInfoService {
         lateinit var instance: BaseApplication
     }
 
-    override val applicationName: String?
-        get() = "Mvvm"
-    override val applciationVersionName: String?
-        get() = "1.0.0"
-    override val applicationVersionCode: String?
-        get() = "1.0"
-    override val applicationDebug: Boolean
-        get() = BuildConfig.DEBUG
+
 
 }
