@@ -26,9 +26,9 @@ webviewjs.takeNativeAction = function(commandname, parameters){
     request.param = parameters;
     if(window.webviewjs.os.isAndroid){
         console.log("android take native action" + JSON.stringify(request));
-        window.xiangxuewebview.takeNativeAction(JSON.stringify(request));
+        window.basewebview.takeNativeAction(JSON.stringify(request));
     } else {
-        window.webkit.messageHandlers.xiangxuewebview.postMessage(JSON.stringify(request))
+        window.webkit.messageHandlers.basewebview.postMessage(JSON.stringify(request))
     }
 }
 
@@ -41,9 +41,9 @@ webviewjs.takeNativeActionWithCallback = function(commandname, parameters, callb
     request.param = parameters;
     request.param.callbackname = callbackname;
     if(window.webviewjs.os.isAndroid){
-        window.xiangxuewebview.takeNativeAction(JSON.stringify(request));
+        window.basewebview.takeNativeAction(JSON.stringify(request));
     } else {
-        window.webkit.messageHandlers.xiangxuewebview.postMessage(JSON.stringify(request))
+        window.webkit.messageHandlers.basewebview.postMessage(JSON.stringify(request))
     }
 }
 
