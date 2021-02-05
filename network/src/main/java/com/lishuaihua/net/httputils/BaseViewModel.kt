@@ -6,10 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.lishuaihua.net.error.ErrorResult
 import com.lishuaihua.net.error.ErrorUtil
 import com.lishuaihua.net.response.BaseResult
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -21,7 +18,6 @@ open class BaseViewModel : ViewModel() {
 
 
     var isShowLoading = MutableLiveData<Boolean>()//是否显示loading
-    var errorData = MutableLiveData<ErrorResult>()//错误信息
 
     private fun showLoading() {
         isShowLoading.value = true
@@ -31,13 +27,6 @@ open class BaseViewModel : ViewModel() {
         isShowLoading.value = false
     }
 
-    private fun showError(error: ErrorResult) {
-        errorData.value = error
-    }
-
-    private fun error(errorResult: ErrorResult) {
-        showError(ErrorResult(errorResult.code, errorResult.msg))
-    }
 
     /**
      * 注意此方法传入的参数：api是以函数作为参数传入
@@ -57,14 +46,14 @@ open class BaseViewModel : ViewModel() {
                 withContext(Dispatchers.IO) {//异步请求接口
                     val result = api()
                     withContext(Dispatchers.Main) {
-                        when(result.code){
-                            200->{//请求成功
+                        when (result.code) {
+                            200 -> {//请求成功
                                 liveData.value = result.data
                             }
-                            4001->{
+                            4001 -> {
 
                             }
-                            else ->{
+                            else -> {
                                 error(ErrorResult(result.code, result.msg))
                             }
                         }
@@ -77,6 +66,7 @@ open class BaseViewModel : ViewModel() {
             }
         }
     }
+
     /**
      * 封装必传参数
      * @param data 请求参数
@@ -94,5 +84,29 @@ open class BaseViewModel : ViewModel() {
         return data.toString().toRequestBody("application/json".toMediaTypeOrNull())
     }
 
+    /**
+     * B依赖A，要B的结果
+     * 线性网络，A执行完成后，执行B。
+     */
+    suspend fun <T> getABLinearResult(): BaseResult<T> {
+        //获取A
+
+        //成功，获取B
+
+        return BaseResult<T>()
+    }
+
+    /**
+     * 要A、B，整合后的结果
+     * 同步网络，A、B，同时执行。
+     */
+    suspend fun getABSyncResult() = coroutineScope {
+        //获取网络A
+        val joke = async { }
+        // 获取网络B
+        val singLeJoke = async {}
+        //组合结果
+//        TestNetAlLData(joke.await().result, singleJoke.await().result)
+    }
 }
 

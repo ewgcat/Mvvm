@@ -11,11 +11,10 @@ import com.lishuaihua.index.databinding.ActivityIndexBinding
 import com.lishuaihua.paging3.ext.bind
 import com.lishuaihua.paging3.simple.SimplePagingAdapter
 
-@Route(path ="/index/index")
+@Route(path = "/index/index")
 class IndexActivity : BaseViewModelActivity<IndexViewModel>() {
     private val binding: ActivityIndexBinding by viewbind()
-    private lateinit var adapter : SimplePagingAdapter
-
+    private lateinit var adapter: SimplePagingAdapter
     override fun getLayoutResId(): Int = R.layout.activity_index
 
     override fun doCreateView(savedInstanceState: Bundle?) {
@@ -29,7 +28,6 @@ class IndexActivity : BaseViewModelActivity<IndexViewModel>() {
 
         binding.recycleView.layoutManager = GridLayoutManager(this, 2)
         adapter = SimplePagingAdapter(IndexHolder(), PlaceHolder())
-
         binding.recycleView.adapter = adapter
         //绑定下拉刷新状态
         adapter.bind(binding.refreshLayout)

@@ -50,9 +50,7 @@ open abstract class BaseViewModelActivity<U : BaseViewModel>() : AppCompatActivi
         vm.isShowLoading.observe(this,  {
             if (it) showLoading() else dismissLoding()
         })
-        vm.errorData.observe(this,  {
-            Toast.makeText(this,it.msg, Toast.LENGTH_SHORT).show()
-        })
+
     }
 
     private var aNoncompatDensity = 0f
