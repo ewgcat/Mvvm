@@ -1,6 +1,7 @@
 package com.lishuaihua.video
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.RelativeLayout
@@ -12,37 +13,12 @@ import com.lishuaihua.video.databinding.ActivityVideoBinding
 @Route(path = "/video/video")
 class VideoActivity : BaseActivity() {
 
-    //    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/upyunb";
-    //    String path = "rtmp://rtmptest.b0.upaiyun.com/live/default4demo33596ad21e01c659489973d38c4d2c56d9mic";
-    //    String path = "http://rtmptest.b0.upaiyun.com/live/default4demo33596ad21e01c659489973d38c4d2c56d9mic.m3u8";
     var path = "rtmp://58.200.131.2:1935/livetv/hunantv"
-//    String path = "/mnt/sdcard/storage/emulated/0/2651H.mp4";
-//    String path = "/mnt/sdcard/videotest/2641H.mp4";
-//    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/myapp11";
-//    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/upyunab";
-//    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/myapp11";
-//    String path = "rtmp://www.zhibo.58youxian.cn/uplive/test111";
-//    String path = "rtmp://115.231.100.126/live/upyunab";
-//    String path = "/mnt/sdcard/test.mp3";
-//    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/upyunaa";
-//    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/test131";
+//    var path = "/mnt/sdcard/test.mp3";
+//    var path = "/mnt/sdcard/storage/emulated/0/2651H.mp4";
+//    var path = "/mnt/sdcard/videotest/2641H.mp4";
 
-    //    String path = "/mnt/sdcard/storage/emulated/0/2651H.mp4";
-    //    String path = "/mnt/sdcard/videotest/2641H.mp4";
-    //    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/myapp11";
-    //    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/upyunab";
-    //    String path = "rtmp://testlivesdk.b0.upaiyun.com/live/myapp11";
-    //    String path = "rtmp://www.zhibo.58youxian.cn/uplive/test111";
-    //    String path = "rtmp://115.231.100.126/live/upyunab";
-
-
-    var mVideoParams: RelativeLayout.LayoutParams? = null
-
-    override fun getLayoutResId(): Int {
-
-        return R.layout.activity_video;
-    }
-
+    override fun getLayoutResId(): Int = R.layout.activity_video
     private val binding: ActivityVideoBinding by viewbind()
 
 
@@ -68,27 +44,54 @@ class VideoActivity : BaseActivity() {
     fun play(view: View?) {
         path = binding.editText.getText().toString()
         binding.jackVideoView.setVideoPath(path)
-        binding.jackVideoView.start()
+        if (binding.jackVideoView.isPlaying) {
+            //暂停播放
+            binding.jackVideoView.pause()
+            binding.jackVideoView.start()
+        } else {
+            //开始播放
+            binding.jackVideoView.start()
+        }
     }
 
     /**
      *    播放流或者暂停流播放
      */
     fun toggle(view: View?) {
-        if ( binding.jackVideoView.isPlaying) {
+        if (binding.jackVideoView.isPlaying) {
             //暂停播放
-            binding. jackVideoView.pause()
+            binding.jackVideoView.pause()
         } else {
             //开始播放
-            binding.  jackVideoView.start()
+            binding.jackVideoView.start()
         }
     }
-    
+
     /**
      *    全屏播放
      */
     fun fullScreen(view: View?) {
-        binding. jackVideoView.fullScreen(this)
+        binding.jackVideoView.fullScreen(this)
+        updateToolbar()
+    }
+
+    private fun updateToolbar() {
+        if (binding.jackVideoView.isFullState) {
+            Log.d("updateToolbar", "isFullState=" + binding.jackVideoView.isFullState)
+            Log.d("updateToolbar", "navigationBar=" + binding.navigationBar.getVisibility())
+
+            if (binding.navigationBar.getVisibility() == View.VISIBLE) {
+                binding.navigationBar.setVisibility(View.GONE)
+                binding.llPath.setVisibility(View.GONE)
+            } else {
+                binding.navigationBar.setVisibility(View.VISIBLE)
+                binding.llPath.setVisibility(View.VISIBLE)
+            }
+        } else {
+            binding.navigationBar.visibility = View.VISIBLE
+            binding.llPath.visibility = View.VISIBLE
+        }
+
     }
 
     /**
@@ -106,8 +109,8 @@ class VideoActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         // 重新开始播放器
-        binding. jackVideoView.resume()
-        binding. jackVideoView.start()
+        binding.jackVideoView.resume()
+        binding.jackVideoView.start()
     }
 
     override fun onPause() {
@@ -118,13 +121,14 @@ class VideoActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
-        binding. jackVideoView.release(true)
+        binding.jackVideoView.release(true)
     }
 
     override fun onBackPressed() {
-        if (binding. jackVideoView.isFullState) {
+        if (!binding.jackVideoView.isFullState) {
             //退出全屏
-            binding. jackVideoView.exitFullScreen(this)
+            binding.jackVideoView.fullScreen(this)
+            binding.jackVideoView.exitFullScreen(this)
             return
         }
         super.onBackPressed()
