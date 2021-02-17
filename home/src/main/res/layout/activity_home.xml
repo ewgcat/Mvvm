@@ -68,7 +68,7 @@
         android:background="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textColor="#ffffff"
-        android:text="RTMP_LIVE"/>
+        android:text="直播"/>
 
 
 
