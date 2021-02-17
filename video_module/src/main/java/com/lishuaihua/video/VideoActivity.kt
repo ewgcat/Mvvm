@@ -72,27 +72,8 @@ class VideoActivity : BaseActivity() {
      */
     fun fullScreen(view: View?) {
         binding.jackVideoView.fullScreen(this)
-        updateToolbar()
     }
 
-    private fun updateToolbar() {
-        if (binding.jackVideoView.isFullState) {
-            Log.d("updateToolbar", "isFullState=" + binding.jackVideoView.isFullState)
-            Log.d("updateToolbar", "navigationBar=" + binding.navigationBar.getVisibility())
-
-            if (binding.navigationBar.getVisibility() == View.VISIBLE) {
-                binding.navigationBar.setVisibility(View.GONE)
-                binding.llPath.setVisibility(View.GONE)
-            } else {
-                binding.navigationBar.setVisibility(View.VISIBLE)
-                binding.llPath.setVisibility(View.VISIBLE)
-            }
-        } else {
-            binding.navigationBar.visibility = View.VISIBLE
-            binding.llPath.visibility = View.VISIBLE
-        }
-
-    }
 
     /**
      * 视频播放信息
