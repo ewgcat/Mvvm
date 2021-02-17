@@ -14,13 +14,14 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
-            <option value="$PROJECT_DIR$/home_module" />
+            <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/imageloaderlib" />
             <option value="$PROJECT_DIR$/index_module" />
             <option value="$PROJECT_DIR$/jackpermissions" />
             <option value="$PROJECT_DIR$/login_module" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/uilib" />
+            <option value="$PROJECT_DIR$/video_module" />
             <option value="$PROJECT_DIR$/workmanagerlib" />
           </set>
         </option>

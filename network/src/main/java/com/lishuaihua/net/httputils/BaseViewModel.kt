@@ -27,7 +27,6 @@ open class BaseViewModel : ViewModel() {
         isShowLoading.value = false
     }
 
-
     /**
      * 注意此方法传入的参数：api是以函数作为参数传入
      * api：即接口调用方法
@@ -38,6 +37,7 @@ open class BaseViewModel : ViewModel() {
     fun <T> launch(
         api: suspend CoroutineScope.() -> BaseResult<T>,//请求接口方法，T表示data实体泛型，调用时可将data对应的bean传入即可
         liveData: MutableLiveData<T>,
+        error: MutableLiveData<ErrorResult>,
         isShowLoading: Boolean = false
     ) {
         if (isShowLoading) showLoading()
@@ -54,13 +54,13 @@ open class BaseViewModel : ViewModel() {
 
                             }
                             else -> {
-                                error(ErrorResult(result.code, result.msg))
+                                error.value=   ErrorResult(result.code, result.msg)
                             }
                         }
                     }
                 }
             } catch (e: Throwable) {//接口请求失败
-                error(ErrorUtil.getError(e))
+                error.value=   ErrorUtil.getError(e)
             } finally {//请求结束
                 dismissLoading()
             }
@@ -86,7 +86,7 @@ open class BaseViewModel : ViewModel() {
 
     /**
      * B依赖A，要B的结果
-     * 线性网络，A执行完成后，执行B。
+     *线性网络，A执行完成后，执行B。
      */
     suspend fun <T> getABLinearResult(): BaseResult<T> {
         //获取A
@@ -97,8 +97,8 @@ open class BaseViewModel : ViewModel() {
     }
 
     /**
-     * 要A、B，整合后的结果
-     * 同步网络，A、B，同时执行。
+    要A、B，整合后的结果
+    同步网络，A、B，同时执行。
      */
     suspend fun getABSyncResult() = coroutineScope {
         //获取网络A

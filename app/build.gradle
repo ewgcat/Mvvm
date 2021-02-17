@@ -17,7 +17,7 @@ android {
         multiDexEnabled true
         flavorDimensions "versionCode"
         ndk {
-            abiFilters "armeabi", "arm64-v8a", "x86", "armeabi-v7a", "x86_64"
+            abiFilters "armeabi-v7a", "arm64-v8a"
         }
         buildConfigField('String', 'VERSION_NAME', "\"$rootProject.versionName\"")
         kapt {
@@ -56,5 +56,5 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api project(path: ':baselib')
-    api project(path: ':home_module')
+    api project(path: ':home')
 }

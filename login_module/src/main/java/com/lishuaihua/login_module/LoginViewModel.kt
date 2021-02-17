@@ -2,6 +2,7 @@ package com.lishuaihua.login_module
 
 import androidx.lifecycle.MutableLiveData
 import com.gialen.baselib.util.MD5Util
+import com.lishuaihua.net.error.ErrorResult
 import com.lishuaihua.net.httputils.BaseViewModel
 
 import com.lishuaihua.net.httputils.HttpUtils
@@ -13,6 +14,7 @@ import java.util.*
 class LoginViewModel : BaseViewModel() {
 
     var liveData = MutableLiveData<UserInfo>()
+    var  errorLiveData= MutableLiveData<ErrorResult>()
     var codeLiveData = MutableLiveData<String>()
 
 
@@ -36,7 +38,7 @@ class LoginViewModel : BaseViewModel() {
                 "0",
                 baseParams
             )
-        },liveData,true)
+        },liveData,errorLiveData,true)
     }
 
 
@@ -53,7 +55,7 @@ class LoginViewModel : BaseViewModel() {
                 sign,
                 reqDate,
                 getBaseParams(jsonObject)
-            )},codeLiveData,false)
+            )},codeLiveData,errorLiveData,false)
     }
 
 }
