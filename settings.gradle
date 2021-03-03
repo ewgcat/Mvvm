@@ -1,3 +1,4 @@
+include ':im_module'
 include ':video_module'
 include ':uilib'
 include ':app',':jackpermissions', ':baselib', ':imageloaderlib'

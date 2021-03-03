@@ -27,17 +27,21 @@ open class BaseApplication : Application() {
         super.onCreate()
         instance = this
         MultiDex.install(applicationContext)
-        Bugly.init(applicationContext,"c3010b29f1",BuildConfig.DEBUG)
+        Bugly.init(applicationContext, "c3010b29f1", BuildConfig.DEBUG)
 
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()
         }
         ARouter.init(this)
+
         val req_date =
             DateUtil.timeStamp2Date2(DateUtil.timestamp_13.toString() + "", "yyyyMMddHH24MMSS")
         val sessionId = MD5Util.MD5(req_date + 2 + "gialen_APP")
-        SharedPreferencesManager.getInstance(instance)!!.saveString(SharedPreferencesManager.SPCommons.SESSIONID, sessionId)
+        SharedPreferencesManager.getInstance(instance)!!.saveString(
+            SharedPreferencesManager.SPCommons.SESSIONID,
+            sessionId
+        )
         val builder = OkHttpClient.Builder()
         builder.addInterceptor { chain ->
             val request = chain.request()
@@ -102,7 +106,6 @@ open class BaseApplication : Application() {
         @get:Synchronized
         lateinit var instance: BaseApplication
     }
-
 
 
 }

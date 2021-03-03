@@ -1,8 +1,6 @@
 package com.lishuaihua.home
 
 import android.os.Bundle
-import android.view.SurfaceHolder
-import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.lishuaihua.baselib.autoservice.IWebViewService
@@ -11,8 +9,9 @@ import com.lishuaihua.baselib.base.BaseActivity
 import com.lishuaihua.baselib.binding.ext.viewbind
 import com.lishuaihua.home.databinding.ActivityHomeBinding
 
+
 @Route(path = "/home/home")
-class HomeActivity : BaseActivity(), SurfaceHolder.Callback {
+class HomeActivity : BaseActivity() {
     private val binding: ActivityHomeBinding by viewbind()
     override fun getLayoutResId(): Int = R.layout.activity_home
 
@@ -27,7 +26,7 @@ class HomeActivity : BaseActivity(), SurfaceHolder.Callback {
             ARouter.getInstance().build("/login/login").navigation()
         }
         binding.page3.setOnClickListener {
-            ARouter.getInstance().build("/index/index").navigation()
+            ARouter.getInstance().build("/index/index").withTransition(0, 0).navigation()
         }
         binding.tvWorkManager.setOnClickListener {
             ARouter.getInstance().build("/workmanagerlib/test").navigation()
@@ -37,13 +36,8 @@ class HomeActivity : BaseActivity(), SurfaceHolder.Callback {
         }
 
 
-    }
-
-    override fun surfaceCreated(holder: SurfaceHolder) {}
-    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        val surface = holder.surface
 
     }
 
-    override fun surfaceDestroyed(holder: SurfaceHolder) {}
+
 }

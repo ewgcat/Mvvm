@@ -27,9 +27,7 @@ class VideoActivity : BaseActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         binding.navigationBar.setTitle("视频流")
         binding.navigationBar.setBackClickListener(this)
-        binding.editText.setText(path)
 
-        binding.jackVideoView.setHudView(binding.hudView)
 
         //设置播放地址
         binding.jackVideoView.setVideoPath(path)
@@ -38,53 +36,7 @@ class VideoActivity : BaseActivity() {
     }
 
 
-    /**
-     * 播放输入的流路径
-     */
-    fun play(view: View?) {
-        path = binding.editText.getText().toString()
-        binding.jackVideoView.setVideoPath(path)
-        if (binding.jackVideoView.isPlaying) {
-            //暂停播放
-            binding.jackVideoView.pause()
-            binding.jackVideoView.start()
-        } else {
-            //开始播放
-            binding.jackVideoView.start()
-        }
-    }
 
-    /**
-     *    播放流或者暂停流播放
-     */
-    fun toggle(view: View?) {
-        if (binding.jackVideoView.isPlaying) {
-            //暂停播放
-            binding.jackVideoView.pause()
-        } else {
-            //开始播放
-            binding.jackVideoView.start()
-        }
-    }
-
-    /**
-     *    全屏播放
-     */
-    fun fullScreen(view: View?) {
-        binding.jackVideoView.fullScreen(this)
-    }
-
-
-    /**
-     * 视频播放信息
-     */
-    fun showPlayInfo(view: View?) {
-        if (binding.hudView.getVisibility() == View.VISIBLE) {
-            binding.hudView.setVisibility(View.GONE)
-        } else {
-            binding.hudView.setVisibility(View.VISIBLE)
-        }
-    }
 
 
     override fun onResume() {
@@ -106,12 +58,6 @@ class VideoActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (!binding.jackVideoView.isFullState) {
-            //退出全屏
-            binding.jackVideoView.fullScreen(this)
-            binding.jackVideoView.exitFullScreen(this)
-            return
-        }
         super.onBackPressed()
     }
 }

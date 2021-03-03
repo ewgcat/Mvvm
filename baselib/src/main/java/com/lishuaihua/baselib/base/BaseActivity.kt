@@ -15,7 +15,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialog
 import com.lishuaihua.baselib.R
 import com.lishuaihua.baselib.bus.LiveDataBus
 import com.lishuaihua.baselib.sp.SharedPreferencesManager

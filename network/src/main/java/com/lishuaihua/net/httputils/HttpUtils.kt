@@ -2,6 +2,7 @@ package com.lishuaihua.net.httputils
 
 import android.content.Context
 import android.util.Log
+import com.lishuaihua.net.dns.JackDns
 import com.lishuaihua.net.ssl.HTTPSCerUtils
 import com.lishuaihua.net.support.CookieJarImpl
 import com.lishuaihua.net.support.HeaderInterceptor
@@ -41,7 +42,10 @@ class HttpUtils {
                     .addInterceptor(HeaderInterceptor())
                     .addInterceptor(CacheInterceptor(context))
                     .cookieJar(CookieJarImpl())
+
+                builder.dns(JackDns())
                 val okHttpClient = builder.build()
+
                 //组装retrofit
                 mRetrofit = Retrofit.Builder()
                     .client(okHttpClient)

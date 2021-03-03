@@ -16,12 +16,12 @@ android {
         multiDexEnabled true
         flavorDimensions "versionCode"
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a","armeabi", "x86"
+            abiFilters "armeabi-v7a", "arm64-v8a", "armeabi", "x86"
         }
         buildConfigField('String', 'VERSION_NAME', "\"$rootProject.versionName\"")
         kapt {
             arguments {
-                arg("moduleName", project.getName())
+                arg("AROUTER_MODULE_NAME", project.getName())
             }
         }
     }
@@ -56,6 +56,6 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api project(path: ':uilib')
-    kapt 'com.alibaba:arouter-compiler:1.1.4'
+    kapt 'com.alibaba:arouter-compiler:1.5.1'
 
 }

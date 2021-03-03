@@ -16,14 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <TableLayout
-            android:id="@+id/hud_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:background="#77000000"
-            android:padding="4dp" />
+
     </RelativeLayout>
     <com.lishuaihua.baselib.widget.NavigationBar
         android:id="@+id/navigation_bar"
@@ -36,64 +29,18 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_below="@id/navigation_bar">
-        <Button
-            android:id="@+id/bt_play"
-            android:layout_alignParentRight="true"
-            android:layout_width="80dp"
-            android:textSize="8sp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:onClick="play"
-            android:text="play" />
-        <EditText
-            android:id="@+id/editText"
-            android:layout_toLeftOf="@id/bt_play"
+
+        <TextView
             android:singleLine="true"
             android:ellipsize="end"
+            android:layout_marginLeft="16dp"
             android:textSize="12sp"
-            android:gravity="center"
-            android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="输入播放地址"
             android:textColor="@color/colorPrimary"
-            android:text="rtmp://live.hkstv.hk.lxdns.com/live/hks" />
+            android:text="播放路径: rtmp://58.200.131.2:1935/livetv/hunantv" />
 
 
     </RelativeLayout>
-    <LinearLayout
-        android:id="@+id/ll_button"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt_change"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:textSize="8sp"
-            android:layout_weight="1"
-            android:onClick="toggle"
-            android:text="on/off" />
-
-        <Button
-            android:id="@+id/bt_full"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:textSize="8sp"
-            android:onClick="fullScreen"
-            android:text="fullScreen" />
-
-        <Button
-            android:id="@+id/bt_show_play"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:textSize="8sp"
-            android:onClick="showPlayInfo"
-            android:text="playinfo" />
-
-    </LinearLayout>
 </RelativeLayout>
