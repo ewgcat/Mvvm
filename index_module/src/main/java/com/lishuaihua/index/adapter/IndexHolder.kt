@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.lishuaihua.baselib.base.BaseApplication
 import com.lishuaihua.baselib.bean.ListTagVO
 import com.lishuaihua.baselib.util.CommonUtil
@@ -47,8 +48,9 @@ class IndexHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
         } else {
             ivSellOut.visibility = View.GONE
         }
-        Log.d("IndexHolder","imgUrl="+data.imgUrl)
-        ivGoodsImg.load(data.imgUrl)
+//        Log.d("IndexHolder","imgUrl="+data.imgUrl)
+//        ivGoodsImg.load(data.imgUrl)
+            Glide.with(ivGoodsImg.context).load(data.imgUrl).into(ivGoodsImg)
         var tvDesc = containerView!!.findViewById<TagTextView>(R.id.tv_desc)
         if (!StringUtils.isEmpty(data.takeMsg)) {
             tvDesc.setTextAndTag(data.title, data.takeMsg!!)
