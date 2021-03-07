@@ -8,12 +8,12 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="/usr/local/gradle/gradle-6.5" />
-        <option name="gradleJvm" value="1.8 (2)" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselib" />
+            <option value="$PROJECT_DIR$/data_module" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/im_module" />
             <option value="$PROJECT_DIR$/imageloaderlib" />

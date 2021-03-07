@@ -8,6 +8,7 @@ plugins {
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
         applicationId "com.lishuaihua.mvvmframework"
         minSdkVersion rootProject.minSdkVersion

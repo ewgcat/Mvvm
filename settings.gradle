@@ -1,3 +1,4 @@
+include ':data_module'
 include ':im_module'
 include ':video_module'
 include ':uilib'

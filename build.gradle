@@ -10,7 +10,6 @@ buildscript {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url 'https://maven.aliyun.com/repository/google' }
-        maven {url  "https://dl.bintray.com/rongcloud/maven"}
 
     }
     dependencies {
@@ -27,7 +26,6 @@ allprojects {
         maven { url "https://jitpack.io" }
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url 'https://maven.aliyun.com/repository/google' }
-        maven {url  "https://dl.bintray.com/rongcloud/maven"}
     }
 }
 
@@ -35,7 +33,7 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 30
     compileSdkVersion = 30
-
+    buildToolsVersion ="30.0.3"
     versionCode = 1
     versionName = "1.0.0"
     recyclerviewVersion="1.1.0"
