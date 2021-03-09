@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+
 }
 
 
@@ -59,4 +60,6 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api project(path: ':baselib')
     api project(path: ':home')
+   
 }
+
