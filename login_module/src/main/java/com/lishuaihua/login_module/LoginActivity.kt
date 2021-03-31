@@ -23,7 +23,6 @@ class LoginActivity : BaseViewModelActivity<LoginViewModel>() {
         binding.navigationBar.setTitle("登录")
         binding.navigationBar.setBackClickListener(this)
         vm.liveData.observe(this, {
-//            binding.tvResult.text = it.toString()
             EventBus.getDefault().post(LoginEvent(it.toString()))
             finish()
         })

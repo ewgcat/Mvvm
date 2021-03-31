@@ -70,6 +70,72 @@
         app:layout_constraintLeft_toRightOf="@+id/tv_work_manager"
         app:layout_constraintTop_toBottomOf="@+id/tv_work_manager" />
 
+    <TextView
+        android:id="@+id/tv_update_apk"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="更新apk"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_rtmp_live"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rtmp_live" />
+    <TextView
+        android:id="@+id/tv_drag_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="拖拽"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_update_apk"
+        app:layout_constraintTop_toBottomOf="@+id/tv_update_apk" />
+    <TextView
+        android:id="@+id/tv_green_dao"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="GreenDao插入数据库"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_drag_view"
+        app:layout_constraintTop_toBottomOf="@+id/tv_drag_view" />
+
+    <TextView
+        android:id="@+id/tv_object_box"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="ObjectBox插入数据库"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_green_dao"
+        app:layout_constraintTop_toBottomOf="@+id/tv_green_dao" />
+
+    <TextView
+        android:id="@+id/tv_room"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="Room插入数据库"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_object_box"
+        app:layout_constraintTop_toBottomOf="@+id/tv_object_box" />
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

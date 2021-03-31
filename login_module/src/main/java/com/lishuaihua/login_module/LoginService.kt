@@ -1,5 +1,6 @@
 package com.lishuaihua.login_module
 
+import com.lishuaihua.data_module.model.UserInfo
 import com.lishuaihua.net.response.BaseResult
 import okhttp3.RequestBody
 import retrofit2.http.*

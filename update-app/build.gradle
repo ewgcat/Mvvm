@@ -1,0 +1,56 @@
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-parcelize")
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        multiDexEnabled true
+        flavorDimensions "versionCode"
+        vectorDrawables.useSupportLibrary = true
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "armeabi", "x86"
+        }
+
+        buildConfigField('String', 'VERSION_NAME', "\"$rootProject.versionName\"")
+        packagingOptions {
+            exclude 'classes.dex'
+            exclude '**.**'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    //网络请求
+    api 'com.lzy.net:okgo:3.0.4'
+    api 'androidx.annotation:annotation:1.1.0'
+    api 'androidx.appcompat:appcompat:1.3.0-alpha02'
+    api 'com.google.android.material:material:1.2.1'
+}
+
+
+
+

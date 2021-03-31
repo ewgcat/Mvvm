@@ -15,6 +15,10 @@ import com.lishuaihua.baselib.R
 import com.lishuaihua.baselib.loadsir.*
 import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.baselib.util.DateUtil
+import com.lishuaihua.data_module.greendao.GreenDaoDataManager
+import com.lishuaihua.data_module.objectbox.ObjectBoxDataManager
+import com.lishuaihua.data_module.room.RoomDataManager
+import com.lishuaihua.logger.JackLogger
 import com.lishuaihua.net.httputils.HttpUtils
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -28,7 +32,10 @@ open class BaseApplication : Application() {
         instance = this
         MultiDex.install(applicationContext)
         Bugly.init(applicationContext, "c3010b29f1", BuildConfig.DEBUG)
-
+        JackLogger.init(BuildConfig.DEBUG);
+        ObjectBoxDataManager.getInstance().init(this)
+        GreenDaoDataManager.init(this)
+        RoomDataManager.getInstance().init(this)
         if (BuildConfig.DEBUG) {
             ARouter.openLog()
             ARouter.openDebug()

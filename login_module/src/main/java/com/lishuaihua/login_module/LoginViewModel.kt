@@ -2,6 +2,7 @@ package com.lishuaihua.login_module
 
 import androidx.lifecycle.MutableLiveData
 import com.gialen.baselib.util.MD5Util
+import com.lishuaihua.data_module.model.UserInfo
 import com.lishuaihua.net.error.ErrorResult
 import com.lishuaihua.net.httputils.BaseViewModel
 

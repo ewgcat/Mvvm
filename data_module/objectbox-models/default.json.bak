@@ -1,0 +1,107 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:1948910641497125795",
+      "lastPropertyId": "15:6555905384689074499",
+      "name": "UserInfo",
+      "properties": [
+        {
+          "id": "1:1039309663405623468",
+          "name": "actionType",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "2:8198236939224585198",
+          "name": "birthday",
+          "type": 9
+        },
+        {
+          "id": "3:675702371321960715",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "4:5859605707980131949",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "5:2086249327945465924",
+          "name": "loginId",
+          "type": 9
+        },
+        {
+          "id": "6:8468490596115556697",
+          "name": "nickname",
+          "type": 9
+        },
+        {
+          "id": "7:8793754108058975514",
+          "name": "phone",
+          "type": 9
+        },
+        {
+          "id": "8:1801988797688463660",
+          "name": "platform",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "9:626104929526367621",
+          "name": "recommendCode",
+          "type": 9
+        },
+        {
+          "id": "10:5672409991590908984",
+          "name": "sex",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "11:5974509852819653739",
+          "name": "storeId",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "12:8409626038672682810",
+          "name": "token",
+          "type": 9
+        },
+        {
+          "id": "13:2288443016015107652",
+          "name": "userHeadPic",
+          "type": 9
+        },
+        {
+          "id": "14:420035991576668255",
+          "name": "userLevel",
+          "type": 5,
+          "flags": 4
+        },
+        {
+          "id": "15:6555905384689074499",
+          "name": "username",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:1948910641497125795",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -31,6 +31,7 @@
 
     <application>
         <activity android:name=".HomeActivity"/>
+        <activity android:name=".DragActivity"/>
         <activity android:name=".MainProcessTestActivity"/>
         <activity android:name=".MainProcessTestActivityB"/>
     </application>

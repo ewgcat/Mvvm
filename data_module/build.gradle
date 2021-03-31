@@ -2,8 +2,8 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'org.greenrobot.greendao'
 }
-
 android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
@@ -15,7 +15,6 @@ android {
         versionName rootProject.versionName
         multiDexEnabled true
         flavorDimensions "versionCode"
-
     }
 
     buildTypes {
@@ -38,13 +37,30 @@ android {
             res.srcDirs = ['src/main/res']
         }
     }
+    greendao {
+        schemaVersion rootProject.dbVersion
+        daoPackage 'com.lishuaihua.data_module.greendao.gen'
+        targetGenDir 'src/main/java'
+    }
 }
 
 dependencies {
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    //首选项
     api 'com.tencent:mmkv-static:1.2.7'
-    api "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
-    api "androidx.room:room-ktx:2.2.5"
+    //操作数据库 room
+    api 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    kapt 'androidx.room:room-compiler:2.2.5'
+    //操作数据库 greendao
+    api 'org.greenrobot:greendao:3.3.0'
+    api 'org.greenrobot:greendao-generator:3.3.0'
+    api 'io.github.yuweiguocn:GreenDaoUpgradeHelper:v2.2.1'
+    //操作数据库 objectbox
+    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"
+    releaseImplementation "io.objectbox:objectbox-android:$objectboxVersion"
+    //浏览器查看手机app数据库数据
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
 }
+apply plugin: 'io.objectbox'

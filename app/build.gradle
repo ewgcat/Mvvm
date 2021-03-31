@@ -3,8 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
-
 }
+
 
 
 android {
@@ -28,7 +28,10 @@ android {
             }
         }
     }
-
+    //使用生成文件
+    kapt {
+        generateStubs = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -60,6 +63,7 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api project(path: ':baselib')
     api project(path: ':home')
+
    
 }
 

@@ -18,7 +18,6 @@ import com.lishuaihua.baselib.util.ScreenUtil
 import com.lishuaihua.baselib.util.StringUtils
 import com.lishuaihua.baselib.util.TagUtils
 import com.lishuaihua.baselib.widget.TagTextView
-import com.lishuaihua.imageloader.load
 import com.lishuaihua.index.R
 import com.lishuaihua.index.bean.ItemListItem
 import com.lishuaihua.paging3.adapter.ItemHelper
