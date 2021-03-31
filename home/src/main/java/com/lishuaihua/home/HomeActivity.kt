@@ -51,9 +51,6 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
         binding.tvUpdateApk.setOnClickListener {
             checkUpdate()
         }
-        binding.tvUpdateApk.setOnClickListener {
-            checkUpdate()
-        }
         binding.tvDragView.setOnClickListener {
             ARouter.getInstance().build("/home/drag").navigation()
         }
