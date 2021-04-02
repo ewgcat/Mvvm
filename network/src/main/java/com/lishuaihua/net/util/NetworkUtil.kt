@@ -1,5 +1,6 @@
 package com.lishuaihua.net.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.telephony.TelephonyManager
@@ -68,6 +69,7 @@ val Context.isWifiNetWork: Boolean
  * @return
  */
 val Context.isFastMobileNetwork: Boolean
+    @SuppressLint("MissingPermission")
     get() {
         val telephonyManager =
             getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager?
