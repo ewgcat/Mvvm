@@ -71,18 +71,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_work_manager" />
 
     <TextView
-        android:id="@+id/tv_update_apk"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center"
-        android:text="更新apk"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@+id/tv_rtmp_live"
-        app:layout_constraintTop_toBottomOf="@+id/tv_rtmp_live" />
-    <TextView
         android:id="@+id/tv_drag_view"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -92,8 +80,8 @@
         android:text="拖拽"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@+id/tv_update_apk"
-        app:layout_constraintTop_toBottomOf="@+id/tv_update_apk" />
+        app:layout_constraintLeft_toRightOf="@+id/tv_rtmp_live"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rtmp_live" />
     <TextView
         android:id="@+id/tv_green_dao"
         android:layout_width="match_parent"

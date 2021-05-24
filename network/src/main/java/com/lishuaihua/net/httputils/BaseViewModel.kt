@@ -84,29 +84,5 @@ open class BaseViewModel : ViewModel() {
         return data.toString().toRequestBody("application/json".toMediaTypeOrNull())
     }
 
-    /**
-     * B依赖A，要B的结果
-     *线性网络，A执行完成后，执行B。
-     */
-    suspend fun <T> getABLinearResult(): BaseResult<T> {
-        //获取A
-
-        //成功，获取B
-
-        return BaseResult<T>()
-    }
-
-    /**
-    要A、B，整合后的结果
-    同步网络，A、B，同时执行。
-     */
-    suspend fun getABSyncResult() = coroutineScope {
-        //获取网络A
-        val joke = async { }
-        // 获取网络B
-        val singLeJoke = async {}
-        //组合结果
-//        TestNetAlLData(joke.await().result, singleJoke.await().result)
-    }
 }
 

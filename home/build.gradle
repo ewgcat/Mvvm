@@ -63,5 +63,4 @@ dependencies {
     api project(path: ':index_module')
     api project(path: ':workmanagerlib')
     api project(path: ':video_module')
-    api project(path: ':update-app')
 }

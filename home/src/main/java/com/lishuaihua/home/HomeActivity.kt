@@ -19,8 +19,6 @@ import com.lishuaihua.data_module.objectbox.ObjectBoxDataManager
 import com.lishuaihua.data_module.model.UserInfo
 import com.lishuaihua.data_module.room.RoomDataManager
 import com.lishuaihua.home.databinding.ActivityHomeBinding
-import com.vector.update_app.*
-import com.vector.update_app.utils.AppUpdateUtils
 import kotlinx.coroutines.launch
 
 
@@ -48,9 +46,6 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
         binding.tvRtmpLive.setOnClickListener {
             ARouter.getInstance().build("/video/video").navigation()
         }
-        binding.tvUpdateApk.setOnClickListener {
-            checkUpdate()
-        }
         binding.tvDragView.setOnClickListener {
             ARouter.getInstance().build("/home/drag").navigation()
         }
@@ -73,103 +68,6 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
 
     }
 
-
-    /**
-     * 更新接口请求
-     */
-    fun checkUpdate() {
-        val path = Environment.getExternalStorageDirectory().absolutePath
-        val params: MutableMap<String, String> = HashMap()
-        params["systemType"] = "1"
-        params["edition"] = AppUpdateUtils.getVersionCode(this).toString()
-        val versionCode = AppUpdateUtils.getVersionCode(this) //获取当前版本号 - 100
-        val ver = versionCode - 100 //当前版本号
-        UpdateAppManager.Builder() //必须设置，当前Activity
-            .setActivity(this) //必须设置，实现httpManager接口的对象
-            .setHttpManager(OkGoUpdateHttpUtil()) //必须设置，更新地址
-            .setUpdateUrl("http://app.fbrx.cn/v1/passport/tool/appQuery") //添加自定义参数
-            .setParams(params) //                .setJsonParams("{\"systemType\":1,\"edition\":1}")//TODO setJsonParams("{\"systemType\":1,\"edition\":"+AppUpdateUtils.getVersionCode(this)+"}")
-            .setJsonParams("{\"systemType\":1,\"edition\":$ver}") //post请求
-            .setPost(true) //设置apk下砸路径，默认是在下载到sd卡下/Download/1.0.0/test.apk
-            .setTargetPath(path)
-            .build() //检测是否有新版本
-            .checkNewApp(object : UpdateCallback() {
-                /**
-                 * 解析json,自定义协议
-                 *
-                 * @param json 服务器返回的json
-                 * @return UpdateAppBean
-                 */
-                override fun parseJson(json: String): UpdateAppBean {
-                    Log.d("YYT", "json:$json")
-                    val updateAppBean = UpdateAppBean()
-                    try {
-                        val appUpdateBean = Gson().fromJson(
-                            json,
-                            AppUpdateBean::class.java
-                        )
-                        if (appUpdateBean.data != null) { //有更新
-                            if (appUpdateBean.data.type == 2) { //强制更新
-                                updateAppBean //（必须）是否更新Yes,No
-                                    .setUpdate("Yes") //（必须）新版本号，
-                                    .setNewVersion(appUpdateBean.data.editionNum) //（必须）下载地址
-                                    //                                            .setApkFileUrl(appUpdateBean.getData().getUrl())
-                                    .setApkFileUrl("https://fubangrongxing-prod.oss-cn-beijing.aliyuncs.com/backstage/test/a08062a9-cd4f-408e-a52f-af3c31b0fd07.apk") //（必须）更新内容
-                                    .setUpdateLog("1.紧急修复优惠返利bug 2.完善体验店模块").isConstraint = true
-                            } else { //非强制更新更新
-                                updateAppBean //（必须）是否更新Yes,No
-                                    .setUpdate("Yes") //（必须）新版本号，
-                                    .setNewVersion(appUpdateBean.data.editionNum) //（必须）下载地址
-                                    //                                            .setApkFileUrl(appUpdateBean.getData().getUrl())
-                                    .setApkFileUrl("https://fubangrongxing-prod.oss-cn-beijing.aliyuncs.com/backstage/test/a08062a9-cd4f-408e-a52f-af3c31b0fd07.apk") //（必须）更新内容
-                                    .setUpdateLog("").isConstraint = false
-                            }
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                    return updateAppBean
-                }
-
-                /**
-                 * 有新版本
-                 *
-                 * @param updateApp        新版本信息
-                 * @param updateAppManager app更新管理器
-                 */
-                override fun hasNewApp(
-                    updateApp: UpdateAppBean,
-                    updateAppManager: UpdateAppManager
-                ) {
-                    //自定义对话框
-                    //                        showDiyDialog(updateApp, updateAppManager);
-                    updateAppManager.showDialogFragment()
-                }
-
-                /**
-                 * 网络请求之前
-                 */
-                override fun onBefore() {
-                    Log.d("YYT", "onBefore")
-                    CProgressDialogUtils.showProgressDialog(this@HomeActivity)
-                }
-
-                /**
-                 * 网路请求之后
-                 */
-                override fun onAfter() {
-                    Log.d("YYT", "onAfter")
-                    CProgressDialogUtils.cancelProgressDialog(this@HomeActivity)
-                }
-
-                /**
-                 * 没有新版本
-                 */
-                override fun noNewApp(error: String) {
-                    Log.d("YYT", "noNewApp")
-                }
-            })
-    }
 
 
 }

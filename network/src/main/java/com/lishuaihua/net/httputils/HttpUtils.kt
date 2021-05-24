@@ -1,11 +1,12 @@
 package com.lishuaihua.net.httputils
 
 import android.content.Context
-import android.util.Log
+import com.lishuaihua.net.BuildConfig
 import com.lishuaihua.net.dns.JackDns
 import com.lishuaihua.net.ssl.HTTPSCerUtils
 import com.lishuaihua.net.support.CookieJarImpl
 import com.lishuaihua.net.support.HeaderInterceptor
+import com.lishuaihua.net.log.HttpLogger
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
@@ -26,9 +27,16 @@ class HttpUtils {
         fun init(context: Context, baseUrl: String, rawId: Int, builder: OkHttpClient.Builder, isDebug: Boolean): Retrofit? {
             if (mRetrofit == null) {
                 if (isDebug) {
-                    // Log信息拦截器
-                    val loggingInterceptor = HttpLoggingInterceptor { message -> Log.d("http", message) }
-                    loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                    val loggingInterceptor = HttpLoggingInterceptor(
+                        HttpLogger()
+                    )
+                    if (BuildConfig.DEBUG) {
+                        // 测试
+                        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    } else {
+                        // 打包
+                        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
+                    }
                     builder.addInterceptor(loggingInterceptor)
                 }
                 if (rawId != 0) {
