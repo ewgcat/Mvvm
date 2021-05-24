@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lishuaihua.baselib.base.BaseViewModelActivity
 import com.lishuaihua.baselib.binding.ext.viewbind
+import com.lishuaihua.baselib.util.CommonUtil
+import com.lishuaihua.recyclerview.GridDividerItemDecoration
 import com.lishuaihua.index.adapter.IndexHolder
 import com.lishuaihua.index.adapter.PlaceHolder
 import com.lishuaihua.index.databinding.ActivityIndexBinding
@@ -27,6 +29,11 @@ class IndexActivity : BaseViewModelActivity<IndexViewModel>() {
         binding.navigationBar.setBackClickListener(this)
 
         binding.recycleView.layoutManager = GridLayoutManager(this, 2)
+        binding.recycleView.addItemDecoration(
+            GridDividerItemDecoration(
+                CommonUtil.dp2px(this, 10f)
+            )
+        )
         adapter = SimplePagingAdapter(IndexHolder(), PlaceHolder())
         binding.recycleView.adapter = adapter
         //绑定下拉刷新状态

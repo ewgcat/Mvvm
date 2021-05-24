@@ -29,7 +29,7 @@ class IndexHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
     var context:Context=BaseApplication.instance
 
     override fun bindItem(item: ItemHelper, data: ItemListItem, payloads: MutableList<Any>?) {
-        var itemWith = (ScreenUtil.getScreenWidth(context) - CommonUtil.dp2px(context!!, 40f))/2
+        var itemWith = (ScreenUtil.getScreenWidth(context) - CommonUtil.dp2px(context!!, 30f))/2
         var item_view = containerView!!.findViewById<CardView>(R.id.item_view)
         val layoutParams = item_view.layoutParams
         layoutParams.width = itemWith

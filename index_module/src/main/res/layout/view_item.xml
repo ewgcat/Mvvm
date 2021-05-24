@@ -4,10 +4,8 @@
     <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/item_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/bg_react_round_white"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp">
@@ -15,23 +13,23 @@
         <LinearLayout
             android:id="@+id/ll_product"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.lishuaihua.baselib.widget.TopRoundImageView
                     android:id="@+id/iv_goods_img"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="fitXY" />
 
 
                 <com.lishuaihua.baselib.widget.TopRoundImageView
                     android:id="@+id/iv_sellout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
                     android:src="@mipmap/ic_sellout" />

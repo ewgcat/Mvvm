@@ -1,4 +1,4 @@
-package com.lishuaihua.baselib.widget
+package com.lishuaihua.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet
