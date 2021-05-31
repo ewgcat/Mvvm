@@ -1,12 +1,13 @@
 package com.lishuaihua.net.httputils
 
 import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.lishuaihua.net.BuildConfig
 import com.lishuaihua.net.dns.JackDns
+import com.lishuaihua.net.log.HttpLogger
 import com.lishuaihua.net.ssl.HTTPSCerUtils
 import com.lishuaihua.net.support.CookieJarImpl
 import com.lishuaihua.net.support.HeaderInterceptor
-import com.lishuaihua.net.log.HttpLogger
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
@@ -38,6 +39,10 @@ class HttpUtils {
                         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
                     }
                     builder.addInterceptor(loggingInterceptor)
+                    if (BuildConfig.DEBUG) {
+                        val chuckerInterceptor = ChuckerInterceptor(context)
+                        builder.addInterceptor(chuckerInterceptor)
+                    }
                 }
                 if (rawId != 0) {
                     HTTPSCerUtils.setCertificate(context, builder, rawId)
@@ -67,16 +72,6 @@ class HttpUtils {
             return mRetrofit!!.create(service)
         }
 
-        //根据文件路径猜测出文件类型
-        private fun guessMimeType(path1: String): MediaType? {
-            var path = path1
-            val fileNameMap = URLConnection.getFileNameMap()
-            path = path.replace("#", "")   //解决文件名中含有#号异常的问题
-            var contentType: String? = fileNameMap.getContentTypeFor(path)
-            if (contentType == null) {
-                contentType = "application/octet-stream"
-            }
-            return contentType.toMediaTypeOrNull()
-        }
+
     }
 }
