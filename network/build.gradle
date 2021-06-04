@@ -51,4 +51,5 @@ dependencies {
     api 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
     debugImplementation 'com.github.chuckerteam.chucker:library:3.4.0'
     releaseImplementation 'com.github.chuckerteam.chucker:library-no-op:3.4.0'
+    implementation 'com.github.mrmike:ok2curl:0.7.0'
 }

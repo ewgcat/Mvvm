@@ -20,7 +20,7 @@ class IndexViewModel : BaseViewModel() {
 
 
     var page: Long = 1
-    var pageSize: Int = 10
+    var pageSize: Int = 30
 
     val pager = SimplePager<Long, DifferData>(
         viewModelScope,

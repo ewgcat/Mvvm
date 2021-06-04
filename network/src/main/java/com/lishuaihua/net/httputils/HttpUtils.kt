@@ -1,6 +1,7 @@
 package com.lishuaihua.net.httputils
 
 import android.content.Context
+import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.lishuaihua.net.BuildConfig
 import com.lishuaihua.net.dns.JackDns
@@ -8,6 +9,8 @@ import com.lishuaihua.net.log.HttpLogger
 import com.lishuaihua.net.ssl.HTTPSCerUtils
 import com.lishuaihua.net.support.CookieJarImpl
 import com.lishuaihua.net.support.HeaderInterceptor
+import com.moczul.ok2curl.CurlInterceptor
+import com.moczul.ok2curl.logger.Loggable
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
@@ -39,6 +42,12 @@ class HttpUtils {
                         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
                     }
                     builder.addInterceptor(loggingInterceptor)
+                    builder.addInterceptor(CurlInterceptor(object : Loggable{
+                        override fun log(message: String?) {
+                            Log.d("curl", message!!)
+                        }
+
+                    }))
                     if (BuildConfig.DEBUG) {
                         val chuckerInterceptor = ChuckerInterceptor(context)
                         builder.addInterceptor(chuckerInterceptor)
