@@ -18,6 +18,7 @@ import com.lishuaihua.baselib.util.DateUtil
 import com.lishuaihua.data_module.greendao.GreenDaoDataManager
 import com.lishuaihua.data_module.objectbox.ObjectBoxDataManager
 import com.lishuaihua.data_module.room.RoomDataManager
+import com.lishuaihua.logger.AndroidLogAdapter
 import com.lishuaihua.logger.JackLogger
 import com.lishuaihua.net.httputils.HttpUtils
 import com.scwang.smart.refresh.footer.ClassicsFooter
@@ -26,13 +27,14 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.bugly.Bugly
 import okhttp3.OkHttpClient
 
+
 open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
         MultiDex.install(applicationContext)
         Bugly.init(applicationContext, "c3010b29f1", BuildConfig.DEBUG)
-        JackLogger.init(BuildConfig.DEBUG);
+        JackLogger.addLogAdapter(AndroidLogAdapter())
         ObjectBoxDataManager.getInstance().init(this)
         GreenDaoDataManager.init(this)
         RoomDataManager.getInstance().init(this)
