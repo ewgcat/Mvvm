@@ -3,8 +3,8 @@
     package="com.lishuaihua.index">
 
     <application>
-
-        <activity android:name="com.lishuaihua.index.IndexActivity"/>
+        <activity android:name=".HeaderRecyclerViewActivity"></activity>
+        <activity android:name=".IndexActivity" />
     </application>
 
 </manifest>

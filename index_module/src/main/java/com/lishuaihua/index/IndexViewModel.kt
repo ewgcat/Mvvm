@@ -1,12 +1,16 @@
 package com.lishuaihua.index
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingSource
 import com.gialen.baselib.util.MD5Util
+import com.lishuaihua.data_module.model.UserInfo
 import com.lishuaihua.net.httputils.BaseViewModel
 import com.lishuaihua.net.httputils.HttpUtils
 import com.lishuaihua.index.bean.IndexData
 import com.lishuaihua.index.service.IndexService
+import com.lishuaihua.net.error.ErrorResult
 import com.lishuaihua.paging3.adapter.DifferData
 import com.lishuaihua.paging3.simple.SimplePager
 import org.json.JSONObject
@@ -42,7 +46,7 @@ class IndexViewModel : BaseViewModel() {
             var reqDate = format.format(date)
             var sign =
                 MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/shop.ald")
-            val result = indexService.index(
+            val result = indexService.hotRecommond(
                 "https://apigw.gialen.com/app/req/shop.ald", sign,
                 reqDate,
                 "0",
@@ -50,13 +54,13 @@ class IndexViewModel : BaseViewModel() {
                 baseParams
             )
             val indexData = result.data as IndexData
-            var itemList = indexData.itemList .toMutableList()
+            var itemList = indexData.itemList.toMutableList()
 
             //返回数据
             PagingSource.LoadResult.Page(
                 itemList,
                 null,
-                page+1,
+                page + 1,
                 0,  //前面剩余多少未加载数量，
                 100  //后面剩余多少未加载数量，配合 enablePlaceholders 在滑动过快的时候显示占位；
             )
@@ -64,6 +68,30 @@ class IndexViewModel : BaseViewModel() {
             //请求失败
             PagingSource.LoadResult.Error(e)
         }
+    }
+    var indexDataList = MutableLiveData<ArrayList<IndexData>>()
+    var errorLiveData = MutableLiveData<ErrorResult>()
+
+    /**
+     * 请求首页
+     */
+    fun getIndexData() {
+        launch({
+            var date = Date()
+            val format = SimpleDateFormat("yyyyMMddHHmm")
+            var reqDate = format.format(date)
+            var sign = MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/shop.index")
+            var data = JSONObject()
+            data.put("platform", 1)
+            data.put("terminal", 2)
+            val baseParams = getBaseParams(data)
+             indexService.index(
+                "https://apigw.gialen.com/app/req/shop.index",
+                sign,
+                reqDate,
+                baseParams
+            )
+        },indexDataList,errorLiveData,true)
     }
 
 

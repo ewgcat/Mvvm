@@ -18,10 +18,10 @@ data class IndexData(
     @SerializedName("key")
     val key: String = "",
     @SerializedName("url")
-    val url: String? = null,
+    val url: String = "",
     @SerializedName("desc")
     val desc: String = "",
 
-    val totalCount:Int=10000
+    val totalCount: Int = 10000,
 )
 

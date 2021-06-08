@@ -34,8 +34,8 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
             )
             webviewService?.startDemoHtml(this)
         }
-        binding.login.setOnClickListener {
-            ARouter.getInstance().build("/login/login").navigation()
+        binding.list.setOnClickListener {
+            ARouter.getInstance().build("/index/header").navigation()
         }
         binding.page3.setOnClickListener {
             ARouter.getInstance().build("/index/index").withTransition(0, 0).navigation()

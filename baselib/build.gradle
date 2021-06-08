@@ -86,6 +86,7 @@ dependencies {
     api 'com.github.ewgcat:JackLogger:1.0.0'
     //屏幕适配
     api 'com.github.ewgcat:AndroidAutoSize:1.0.0'
+    api 'com.github.ewgcat:BannerDemo:1.0.1'
 
     //图片加载——Glide
     api "com.github.bumptech.glide:glide:4.11.0"

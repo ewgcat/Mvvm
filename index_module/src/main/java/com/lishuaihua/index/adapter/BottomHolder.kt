@@ -24,7 +24,7 @@ import com.lishuaihua.paging3.adapter.ItemHelper
 import com.lishuaihua.paging3.simple.SimpleHolder
 import java.util.ArrayList
 
-class IndexHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
+class BottomHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
     var isVip=true
     var context:Context=BaseApplication.instance
 

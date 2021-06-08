@@ -37,7 +37,7 @@ data class ItemListItem(
     @SerializedName("imgHeight")
     val imgHeight: Int = 0,
     @SerializedName("itemList")
-    val itemList: Any? = null,
+    var itemList: List<SecondItemListBean> = emptyList(),
     @SerializedName("linkType")
     val linkType: String = "",
     @SerializedName("id")
@@ -45,7 +45,7 @@ data class ItemListItem(
     @SerializedName("crossBorderTag")
     val crossBorderTag: String? = null,
     @SerializedName("countryTag")
-    val countryTag: String? = null
+    val countryTag: String? = null,
 ) : DifferData {
     override fun areItemsTheSame(d: DifferData): Boolean {
         return (d as? ItemListItem)?.id == id
