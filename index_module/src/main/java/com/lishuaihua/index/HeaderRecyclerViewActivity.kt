@@ -74,7 +74,7 @@ class HeaderRecyclerViewActivity: BaseViewModelActivity<IndexViewModel>() {
         }, false)
         recyclerView.adapter=headerAdapter
         binding.recycleView.layoutManager = GridLayoutManager(this, 2)
-        binding.recycleView.addItemDecoration(GridDividerItemDecoration(CommonUtil.dp2px(this, 10f)))
+//        binding.recycleView.addItemDecoration(GridDividerItemDecoration(CommonUtil.dp2px(this, 10f)))
         bottomAdapter = SimplePagingAdapter(BottomHolder(), BottomPlaceHolder())
         binding.recycleView.setAdapter(bottomAdapter)
         binding.recycleView.addHeaderView(headerView)
