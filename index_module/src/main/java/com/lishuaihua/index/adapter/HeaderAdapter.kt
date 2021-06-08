@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.lishuaihua.index.adv.AdvViewHolder
@@ -19,11 +18,14 @@ import com.lishuaihua.index.product_floor.ProductFloorViewHolder
 import com.lishuaihua.banner.Banner
 import com.lishuaihua.baselib.util.CommonUtil
 import com.lishuaihua.baselib.util.ScreenUtil
+import com.lishuaihua.index.IndexViewModel
 import com.lishuaihua.index.R
 import com.lishuaihua.index.bean.IndexData
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import java.util.ArrayList
 
-class HeaderAdapter (private val context: Context, private val onPageChangeListener: ViewPager.OnPageChangeListener?, val isVip:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HeaderAdapter (private val context: Context,  private val onPageChangeListener: ViewPager.OnPageChangeListener?, val isVip:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
 
 
     private var indexDataList: ArrayList<IndexData>
@@ -58,9 +60,9 @@ class HeaderAdapter (private val context: Context, private val onPageChangeListe
         } else if  ("xiaojiaoOptimization".equals(indexDataList[position].type)) {
             7
         }else if  ("productFloor".equals(indexDataList[position].type)) {
-            9
-        } else {
             8
+        } else {
+            9
         }
     }
 
@@ -126,7 +128,7 @@ class HeaderAdapter (private val context: Context, private val onPageChangeListe
         }else if (getItemViewType(position) == 7){
             val optimizationViewHolder = holder as OptimizationViewHolder
             optimizationViewHolder.bindView(context,indexDataList!![position],isVip)
-        }else if (getItemViewType(position) == 9){
+        }else if (getItemViewType(position) == 8){
             val productFloorViewHolder = holder as ProductFloorViewHolder
             productFloorViewHolder.bindView(context,indexDataList!![position],isVip)
         }

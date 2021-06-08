@@ -47,8 +47,6 @@ class BottomHolder() : SimpleHolder<ItemListItem>(R.layout.view_item) {
         } else {
             ivSellOut.visibility = View.GONE
         }
-//        Log.d("IndexHolder","imgUrl="+data.imgUrl)
-//        ivGoodsImg.load(data.imgUrl)
             Glide.with(ivGoodsImg.context).load(data.imgUrl).into(ivGoodsImg)
         var tvDesc = containerView!!.findViewById<TagTextView>(R.id.tv_desc)
         if (!StringUtils.isEmpty(data.takeMsg)) {

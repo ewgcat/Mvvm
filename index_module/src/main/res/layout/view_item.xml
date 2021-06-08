@@ -6,8 +6,6 @@
         android:id="@+id/item_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/bg_react_round_white"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp">
@@ -138,4 +136,5 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </layout>

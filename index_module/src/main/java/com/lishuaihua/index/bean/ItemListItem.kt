@@ -46,6 +46,7 @@ data class ItemListItem(
     val crossBorderTag: String? = null,
     @SerializedName("countryTag")
     val countryTag: String? = null,
+
 ) : DifferData {
     override fun areItemsTheSame(d: DifferData): Boolean {
         return (d as? ItemListItem)?.id == id
