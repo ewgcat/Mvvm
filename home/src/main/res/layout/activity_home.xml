@@ -17,6 +17,18 @@
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/float_window"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="浮窗"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/list"
+        app:layout_constraintTop_toBottomOf="@+id/list"/>
 
     <TextView
         android:id="@+id/page3"
@@ -28,8 +40,8 @@
         android:text="paging3 使用页面"
         android:textColor="#ffffff"
         android:textSize="16sp"
-        app:layout_constraintLeft_toRightOf="@+id/list"
-        app:layout_constraintTop_toBottomOf="@+id/list" />
+        app:layout_constraintLeft_toRightOf="@+id/float_window"
+        app:layout_constraintTop_toBottomOf="@+id/float_window" />
 
     <TextView
         android:id="@+id/tv_browser"

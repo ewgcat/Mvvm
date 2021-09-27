@@ -1,11 +1,15 @@
 package com.lishuaihua.index
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lishuaihua.baselib.base.BaseViewModelActivity
 import com.lishuaihua.baselib.binding.ext.viewbind
+import com.lishuaihua.baselib.sp.SharedPreferencesManager
 import com.lishuaihua.baselib.util.CommonUtil
+import com.lishuaihua.baselib.util.StringUtils
 import com.lishuaihua.recyclerview.GridDividerItemDecoration
 import com.lishuaihua.index.adapter.BottomHolder
 import com.lishuaihua.index.adapter.BottomPlaceHolder
@@ -23,6 +27,25 @@ class IndexActivity : BaseViewModelActivity<IndexViewModel>() {
     override fun doCreateView(savedInstanceState: Bundle?) {
         binding.navigationBar.setTitle("paging3")
         binding.navigationBar.setBackClickListener(this)
+        val instance = SharedPreferencesManager.getInstance(this)
+        binding.et.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!=null&&!StringUtils.isEmpty(s.toString())&&instance!=null){
+                    val keyWord = s.toString()
+                    val dataList = instance.getDataList<String>(SharedPreferencesManager.SPCommons.KEY_WORD)
+                    val index = dataList.indexOf(keyWord)
+                }
+
+            }
+        })
         binding.recycleView.layoutManager = GridLayoutManager(this, 2)
         binding.recycleView.addItemDecoration(
             GridDividerItemDecoration(CommonUtil.dp2px(this, 10f))

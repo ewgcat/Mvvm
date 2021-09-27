@@ -45,7 +45,7 @@ class IndexViewModel : BaseViewModel() {
             val format = SimpleDateFormat("yyyyMMddHHmm")
             var reqDate = format.format(date)
             var sign =
-                MD5Util.MD5("jiaomigo.gialen.com#2019|" + "" + "|" + reqDate + "|" + "app/req/shop.ald")
+                MD5Util.MD5("jiaomigo.gialen.com#2019|" +  "|" + reqDate + "|" + "app/req/shop.ald")
             val result = indexService.hotRecommond(
                 "https://apigw.gialen.com/app/req/shop.ald", sign,
                 reqDate,

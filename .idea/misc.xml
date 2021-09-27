@@ -4,6 +4,34 @@
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
     <groovy codeStyle="LEGACY" />
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.25052083333333336" />
+        <entry key="baselib/src/main/res/drawable/bg_colorful.xml" value="0.2515625" />
+        <entry key="baselib/src/main/res/drawable/bg_round_corner.xml" value="0.2515625" />
+        <entry key="baselib/src/main/res/layout/activity_float_window.xml" value="0.20471014492753623" />
+        <entry key="baselib/src/main/res/layout/layout_loading.xml" value="0.20425724637681159" />
+        <entry key="baselib/src/main/res/layout/main_layout_anim_reveal_window.xml" value="0.20425724637681159" />
+        <entry key="baselib/src/main/res/layout/main_layout_float_full_screen_touch_able.xml" value="0.11875" />
+        <entry key="baselib/src/main/res/layout/main_layout_float_full_screen_touch_disable.xml" value="0.11875" />
+        <entry key="baselib/src/main/res/layout/main_layout_float_not_full_screen_touch_disable.xml" value="0.11875" />
+        <entry key="baselib/src/main/res/layout/main_layout_float_permission_detect.xml" value="0.11875" />
+        <entry key="baselib/src/main/res/layout/main_layout_follow_touch.xml" value="0.11875" />
+        <entry key="baselib/src/main/res/layout/main_layout_input_window.xml" value="0.11875" />
+        <entry key="floatwindow/src/main/res/drawable/bg_react_round_white.xml" value="0.2515625" />
+        <entry key="floatwindow/src/main/res/drawable/bg_round_corner.xml" value="0.2515625" />
+        <entry key="floatwindow/src/main/res/drawable/spot_corners_bg.xml" value="0.2515625" />
+        <entry key="floatwindow/src/main/res/layout/activity_float_window.xml" value="0.1" />
+        <entry key="floatwindow/src/main/res/layout/adapter_list_tag.xml" value="0.20471014492753623" />
+        <entry key="floatwindow/src/main/res/layout/drag_sub_view.xml" value="0.20471014492753623" />
+        <entry key="floatwindow/src/main/res/layout/main_layout_input_window.xml" value="0.20471014492753623" />
+        <entry key="home/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="index_module/src/main/res/layout/activity_header_recycler_view.xml" value="0.22327898550724637" />
+        <entry key="index_module/src/main/res/layout/activity_index.xml" value="0.22780797101449277" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

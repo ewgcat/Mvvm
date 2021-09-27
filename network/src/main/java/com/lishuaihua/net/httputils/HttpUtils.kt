@@ -42,12 +42,7 @@ class HttpUtils {
                         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE)
                     }
                     builder.addInterceptor(loggingInterceptor)
-                    builder.addInterceptor(CurlInterceptor(object : Loggable{
-                        override fun log(message: String?) {
-                            Log.d("curl", message!!)
-                        }
-
-                    }))
+                    builder.addInterceptor(CurlInterceptor { message -> Log.d("curl", message!!) })
                     if (BuildConfig.DEBUG) {
                         val chuckerInterceptor = ChuckerInterceptor(context)
                         builder.addInterceptor(chuckerInterceptor)

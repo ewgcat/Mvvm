@@ -2,6 +2,8 @@ package com.lishuaihua.baselib.sp
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 /**
  * 共享参数管理类
@@ -64,13 +66,33 @@ class SharedPreferencesManager private constructor(context: Context) {
     fun getSet(key: String?, defValue: Set<String?>?): Set<String>? {
         return sp!!.getStringSet(key, defValue)
     }
+    /**
+     * 保存List
+     *
+     * @param tag
+     * @param data
+     */
+    fun <T> setDataList(tag: String?, data: List<T>?) {
+        val gson = Gson()
+        //转换成json数据，再保存
+        val strJson: String = gson.toJson(data)
+        saveString(tag, strJson)
+    }
+
+    fun <T> getDataList(tag: String?): List<T> {
+        var dataList: ArrayList<T> = ArrayList()
+        val strJson = sp!!.getString(tag, null) ?: return dataList
+        val gson = Gson()
+        dataList = gson.fromJson(strJson, object : TypeToken<ArrayList<T>>() {}.type)
+        return dataList
+    }
 
     /**
      * 操作SharedPreference相关常量
      */
     interface SPCommons {
         companion object {
-            const val CART_GOODS_NUM = "cart_goods_num"
+            const val KEY_WORD = "key_word"
 
             //是否为第一次安装app
             //用户token
@@ -100,6 +122,7 @@ class SharedPreferencesManager private constructor(context: Context) {
             return INSTANCE
         }
     }
+
 
     init {
         if (sp == null) {

@@ -83,7 +83,7 @@ class HeaderRecyclerViewActivity : BaseViewModelActivity<IndexViewModel>() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         bottomAdapter = SimplePagingAdapter(BottomHolder(), BottomPlaceHolder())
         recyclerView.addItemDecoration(GridDividerItemDecoration(CommonUtil.dp2px(this, 10f)))
-        recyclerView.setAdapter(bottomAdapter)
+        recyclerView.adapter = bottomAdapter
 //        绑定下拉刷新状态
         bottomAdapter.bind(binding.refreshLayout)
 //        绑定数据源

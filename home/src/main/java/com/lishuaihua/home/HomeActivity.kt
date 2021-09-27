@@ -37,6 +37,9 @@ class HomeActivity : BaseViewModelActivity<HomeViewModel>() {
         binding.list.setOnClickListener {
             ARouter.getInstance().build("/index/header").navigation()
         }
+        binding.floatWindow.setOnClickListener {
+            ARouter.getInstance().build("/float/float_window").navigation()
+        }
         binding.page3.setOnClickListener {
             ARouter.getInstance().build("/index/index").withTransition(0, 0).navigation()
         }

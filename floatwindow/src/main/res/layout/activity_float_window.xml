@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_check_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/check_float_window_permission" />
+
+        <Button
+            android:id="@+id/btn_stop_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/stop_service" />
+
+        <Button
+            android:id="@+id/btn_full_screen_touch_able"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/full_screen_touch_able" />
+
+        <Button
+            android:id="@+id/btn_full_screen_touch_disable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/full_screen_touch_disable" />
+
+        <Button
+            android:id="@+id/btn_not_full_touch_able"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/not_full_screen_touch_able" />
+
+        <Button
+            android:id="@+id/btn_not_full_touch_disable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/not_full_screen_touch_disable" />
+
+
+        <Button
+            android:id="@+id/btn_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/request_focus_interact_with_input" />
+
+        <Button
+            android:id="@+id/btn_anim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/float_fluent_anim" />
+
+        <Button
+            android:id="@+id/btn_touch_follow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="跟随手势滑动" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lishuaihua.baselib">
-
+    package="com.lishuaihua.floatwindow">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
@@ -14,6 +13,10 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true">
-
+        <activity android:name="com.lishuaihua.floatwindow.FloatWindowActivity"/>
+        <service
+            android:name="com.lishuaihua.floatwindow.FloatWindowService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 </manifest>
